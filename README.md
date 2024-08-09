@@ -1,27 +1,20 @@
-# JogoDuelo
+# jogo-duelo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.7.
+[Edit in StackBlitz ⚡️](https://stackblitz.com/~/github.com/LuizHeSilva/jogo-duelo)
 
-## Development server
+# Melhorias
+[X] Popup ao clicar nos pontos de acerto;
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+[X] Implementar em todos os pontos;
 
-## Code scaffolding
+[ ] Implementar regra de acerto para cada parte do corpo;
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+[ ] Ajustar variaveis dos pontos para mostrar valores reais;
 
-## Build
+[ ] Introduzir painel de saúde do personagem;
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+[ ] Melhorar css do painel;
 
-## Running unit tests
+[ ] Adicionar probabilidade de acerto dos tiros;
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+[ ] Ação no NPC ser automatica (component roleta para definir onde o npc irá atacar);

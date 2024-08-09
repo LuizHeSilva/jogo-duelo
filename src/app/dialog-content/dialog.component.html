@@ -1,0 +1,24 @@
+<ng-template #modal>
+  <div class="modal-header">
+    <h5 class="modal-title">{{ modalConfig.tituloDialog }}</h5>
+  </div>
+  <div class="modal-body">
+    <ng-content></ng-content>
+  </div>
+  <div class="modal-footer">
+    <button type="button"
+            class="btn btn-outline-secondary"
+            (click)="dismiss()"
+            *ngIf="modalConfig.esconderBotaoCancelar === undefined || !modalConfig.esconderBotaoCancelar()"
+            [disabled]="modalConfig.desativarBotaoCancelar !== undefined && modalConfig.desativarBotaoCancelar()">
+      {{ modalConfig.labelBotaoCancelar }}
+    </button>
+    <button type="button"
+            class="btn btn-outline-primary"
+            (click)="close()"
+            *ngIf="modalConfig.esconderBotaoFechar === undefined || !modalConfig.esconderBotaoFechar()"
+            [disabled]="modalConfig.desativarBotaoFechar !== undefined && modalConfig.desativarBotaoFechar()">
+      {{ modalConfig.labelBotaoFechar }}
+    </button>
+  </div>
+</ng-template>

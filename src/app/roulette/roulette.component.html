@@ -1,0 +1,12 @@
+<div class="roulette-container">
+<div class="roulette">
+    <div class="sector" *ngFor="let sector of sectors; let i = index" [style.transform]="'rotate(' + (i * sectorAngle) + 'deg)'">
+    <div class="sector-inner">
+        {{ sector }}
+    </div>
+    </div>
+</div>
+<!--<button (click)="spin()">Spin</button>-->
+<!-- <p *ngIf="result">Você acertou: {{ result }}</p> -->
+</div>
+  

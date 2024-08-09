@@ -1,0 +1,93 @@
+.pessoa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cabeca,
+.tronco,
+.braco,
+.perna {
+  position: relative;
+}
+
+.cabeca {
+  width: 100px;
+  height: 100px;
+  background-color: #ffcc99;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.tronco {
+  width: 80px;
+  height: 150px;
+  background-color: #ff9999;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.braco {
+  width: 20px;
+  height: 100px;
+  background-color: #ff9999;
+  position: absolute;
+  top: 0;
+}
+
+.braco.esquerdo {
+  left: -30px;
+}
+
+.braco.direito {
+  right: -30px;
+}
+
+.pernas {
+  display: flex;
+  justify-content: space-between;
+  width: 80px;
+  margin-top: 10px;
+}
+
+.perna {
+  width: 30px;
+  height: 100px;
+  background-color: #ff9999;
+}
+
+.circulo {
+  width: 20px;
+  height: 20px;
+  background-color: #333;
+  border-radius: 50%;
+  position: absolute; /* Altera a posição para absolute */
+  top: 50%; /* Posiciona verticalmente no meio */
+  left: 50%; /* Posiciona horizontalmente no meio */
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Ajusta o círculo para que fique centralizado */
+  cursor: pointer;
+}
+
+.tooltip {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  color: #fff;
+  padding: 5px;
+  border-radius: 3px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 999;
+  top: 30px; /* Ajuste conforme necessário */
+  left: 50%; /* Alinha ao meio do círculo */
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.circulo:hover .tooltip {
+  display: block;
+}

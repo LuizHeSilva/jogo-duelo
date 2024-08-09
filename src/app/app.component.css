@@ -1,0 +1,59 @@
+/* Estilos globais */
+body {
+    font-family: 'Courier New', Courier, monospace; /* Fonte estilo máquina de escrever */
+    background-color: #f5f5dc; /* Cor de fundo bege claro */
+    margin: 0;
+    padding: 0;
+}
+
+/* Container do menu */
+.menu {
+    background-color: #8b4513; /* Marrom couro */
+    padding: 10px 20px;
+    border-bottom: 4px solid #d2691e; /* Borda marrom escuro */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */
+}
+
+/* Navegação do menu */
+.menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Centraliza o menu horizontalmente */
+}
+
+/* Itens do menu */
+.menu li {
+    margin: 0 15px; /* Espaçamento entre itens */
+}
+
+/* Links do menu */
+.menu a {
+    text-decoration: none;
+    color: #fff; /* Cor do texto branca */
+    font-size: 18px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border: 2px solid #d2691e; /* Borda marrom escuro */
+    border-radius: 5px; /* Borda arredondada */
+    transition: background-color 0.3s, color 0.3s; /* Transição suave */
+}
+
+/* Efeito de hover para links */
+.menu a:hover {
+    background-color: #d2691e; /* Cor de fundo marrom escuro ao passar o mouse */
+    color: #fff; /* Cor do texto branca */
+}
+
+/* Efeito ativo para o link selecionado */
+.menu a.active {
+    background-color: #a0522d; /* Cor de fundo marrom mais escuro */
+    color: #fff; /* Cor do texto branca */
+}
+
+/* Estilo dos itens do menu com ícones (se necessário) */
+.menu i {
+    margin-right: 8px; /* Espaçamento entre ícone e texto */
+    font-size: 20px; /* Tamanho do ícone */
+}

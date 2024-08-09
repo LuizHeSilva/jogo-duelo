@@ -1,0 +1,36 @@
+<dialog #modal [modalConfig]="modalConfig">
+  <dados></dados>
+</dialog>
+
+<div class="pessoa">
+  <div class="cabeca">
+    <div class="circulo" (click)="openDialog('cabeca')">
+      <div class="tooltip">10/10</div>
+    </div>
+  </div>
+  <div class="tronco">
+    <div class="circulo" (click)="openDialog('torso')"></div>
+    <div class="braco esquerdo">
+      <div class="circulo" (click)="openDialog('bracos')">
+        <div class="tooltip">10/10</div>
+      </div>
+    </div>
+    <div class="braco direito">
+      <div class="circulo" (click)="openDialog('bracos')">
+        <div class="tooltip">10/10</div>
+      </div>
+    </div>
+  </div>
+  <div class="pernas">
+    <div class="perna">
+      <div class="circulo" (click)="openDialog('pernas')">
+        <div class="tooltip">10/10</div>
+      </div>
+    </div>
+    <div class="perna">
+      <div class="circulo" (click)="openDialog('pernas')">
+        <div class="tooltip">10/10</div>
+      </div>
+    </div>
+  </div>
+</div>
