@@ -15,6 +15,7 @@ export class DuelControlsComponent {
   @ViewChild('modal') private modalComponent: DialogComponent;
 
   modalConfig: DialogConfigModel;
+  
   async openDialog(parteDoCorpo: string) {
     this.modalConfig = {
       tituloDialog: 'Ataque',

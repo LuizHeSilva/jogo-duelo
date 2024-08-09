@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {DadoService} from './dados.service';
 import {DanoStorageComponent} from "../storage/dano-storage.component";
+import { DanoAction } from './dados.action';
 
 @Component({
   selector: 'dados',
@@ -9,10 +10,14 @@ import {DanoStorageComponent} from "../storage/dano-storage.component";
 })
 export class DadosComponent implements OnInit {
 
-    public roll: number;
+    public resultadoDado: number;
+    
+    get resultadoAtaque() {
+        return this._action.resultadoAtaque;
+    }
 
     constructor(private _dadoService: DadoService,
-                private _danoStorage: DanoStorageComponent){
+                private _action: DanoAction){
     }
 
     ngOnInit(): void {
@@ -21,28 +26,9 @@ export class DadosComponent implements OnInit {
 
     rolar() {
         this._dadoService.rolarDado(1, 20).subscribe((resultado: [{id: number, value: number}]) => {
-            this.roll = resultado[0].value;
-            this._verificar();
+            this.resultadoDado = resultado[0].value;
+            this._action.regraAtaque(this.resultadoDado);
         });
-    }
-
-//     TODO: implementar em um ACTION as regras de como irá acertar os ataques
-    private _verificar() {
-        const parteCorpo = this._danoStorage.ataque?.parteCorpo;
-        switch (parteCorpo) {
-            case 'cabeca':
-                if (this.roll >= 10) {
-                    this._danoStorage.setDano(20);
-                    console.log('acertou');
-                }
-                break;
-            case 'torso':
-                break;
-            case 'bracos':
-                break;
-            case 'pernas':
-                break;
-        }
     }
 
 }

@@ -8,7 +8,8 @@ export class DanoStorageComponent {
 
     public ataque: Ataque = {
         parteCorpo: '',
-        dano: 0};
+        dano: 0
+    };
 
     constructor() { }
 

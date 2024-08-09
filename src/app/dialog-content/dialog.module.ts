@@ -1,14 +1,12 @@
-import {CommonModule} from "@angular/common";
-import {NgModule} from "@angular/core";
-import {DadosModule} from "../dados/dados.module";
-import {DialogComponent} from "./dialog.component";
-import {RouletteModule} from "../roulette/roulette.module";
+import { CommonModule } from "@angular/common";
+import { NgModule } from "@angular/core";
+import { RouletteModule } from "../roulette/roulette.module";
+import { DialogComponent } from "./dialog.component";
 
 @NgModule({
     declarations: [DialogComponent],
     imports: [
         CommonModule,
-        DadosModule,
         RouletteModule
     ],
     exports: [DialogComponent]
