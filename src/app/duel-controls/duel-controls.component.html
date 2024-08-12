@@ -1,5 +1,5 @@
-<dialog #modal [modalConfig]="modalConfig">
-  <dados></dados>
+<dialog #modal [modalConfig]="modalConfig" (fecharEmit)="showDados()">
+  <dados *ngIf="exibeDados" (attackEmit)="atacar($event)"></dados>
 </dialog>
 
 <div class="pessoa">

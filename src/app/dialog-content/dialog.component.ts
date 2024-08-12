@@ -1,6 +1,6 @@
-import { Component, Injectable, Input, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core'
-import {DialogConfigModel} from "../models/dialog-config.model";
-import {NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
+import { Component, EventEmitter, Injectable, Input, Output, TemplateRef, ViewChild } from '@angular/core';
+import { NgbModal, NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
+import { DialogConfigModel } from "../models/dialog-config.model";
 
 @Component({
   selector: 'dialog',
@@ -8,23 +8,14 @@ import {NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
   styleUrls: ['./dialog.component.css']
 })
 @Injectable()
-export class DialogComponent implements OnDestroy {
+export class DialogComponent {
 
     @Input() public modalConfig: DialogConfigModel;
+    @Output() fecharEmit: EventEmitter<any> = new EventEmitter();
     @ViewChild('modal') private modalContent: TemplateRef<DialogComponent>;
     private modalRef: NgbModalRef;
 
     constructor(private modalService: NgbModal) { }
-
-    ngOnDestroy(): void {
-        this.reset();
-    }
-
-    private reset() {
-        this.modalRef = null;
-        this.modalContent = null;
-        this.modalConfig = null;
-    }
 
     open(): Promise<boolean> {
         return new Promise<boolean>(resolve => {
@@ -37,7 +28,7 @@ export class DialogComponent implements OnDestroy {
         if (this.modalConfig.confirmacaoFechar === undefined || (await this.modalConfig.confirmacaoFechar())) {
             const result = this.modalConfig.onFechar === undefined || (await this.modalConfig.onFechar())
             this.modalRef.close(result)
-            this.reset();
+            this.fecharEmit.emit();
         }
     }
 
@@ -45,7 +36,7 @@ export class DialogComponent implements OnDestroy {
         if (this.modalConfig.confirmacaoCancelar === undefined || (await this.modalConfig.confirmacaoCancelar())) {
             const result = this.modalConfig.onCancelar === undefined || (await this.modalConfig.onCancelar())
             this.modalRef.dismiss(result);
-            this.reset();
+            this.fecharEmit.emit();
         }
     }
 }

@@ -1,7 +1,8 @@
-import {Component, EventEmitter, Output, ViewChild} from '@angular/core';
-import {dialogAnimations} from '../dialog-content/dialog-animations';
-import {DialogConfigModel} from "../models/dialog-config.model";
-import {DialogComponent} from "../dialog-content/dialog.component";
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
+import { dialogAnimations } from '../dialog-content/dialog-animations';
+import { DialogComponent } from "../dialog-content/dialog.component";
+import { DialogConfigModel } from "../models/dialog-config.model";
+import { DanoStorageComponent } from '../storage/dano-storage.component';
 
 @Component({
   selector: 'duel-controls',
@@ -15,20 +16,29 @@ export class DuelControlsComponent {
   @ViewChild('modal') private modalComponent: DialogComponent;
 
   modalConfig: DialogConfigModel;
+  exibeDados = false;
+
+  constructor(private _storage: DanoStorageComponent){}
   
   async openDialog(parteDoCorpo: string) {
     this.modalConfig = {
       tituloDialog: 'Ataque',
       labelBotaoFechar: 'Atacar',
-      labelBotaoCancelar: 'Desistir',
-      esconderBotaoFechar(): boolean {
-        return true;}
+      labelBotaoCancelar: 'Fechar',
+      esconderBotaoFechar(): boolean {return true;}
     }
-    this.atacar(parteDoCorpo);
+    
+    this.exibeDados = true;
+    this._storage.setParteCorpo(parteDoCorpo);
     return await this.modalComponent.open();
+  }
+
+  showDados() {
+    this.exibeDados = false;
   }
 
   atacar(parteDoCorpo: string) {
     this.attackEmit.emit(parteDoCorpo);
   }
+
 }

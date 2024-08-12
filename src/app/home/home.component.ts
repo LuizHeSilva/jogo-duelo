@@ -18,7 +18,6 @@ export class HomeComponent implements OnInit {
   }
 
   startGame() {
-    console.log('homecomponent init')
     this.router.navigate(['/game'])
   }
 }

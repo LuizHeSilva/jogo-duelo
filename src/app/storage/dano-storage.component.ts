@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Ataque} from "../models/ataque.model";
+import { Ataque } from "../models/ataque.model";
 
 @Injectable({
     providedIn: 'root'
@@ -10,6 +10,8 @@ export class DanoStorageComponent {
         parteCorpo: '',
         dano: 0
     };
+
+    turno: boolean = true;
 
     constructor() { }
 
@@ -28,4 +30,6 @@ export class DanoStorageComponent {
     getParteCorpo(): string {
         return this.ataque.parteCorpo;
     }
+
+    // TODO: criar método para executar o ataque e remover outputs dos components
 }

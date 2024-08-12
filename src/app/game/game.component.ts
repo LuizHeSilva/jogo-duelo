@@ -1,7 +1,7 @@
-import {Component} from '@angular/core';
-import {Personagem} from '../models/personagem.model';
-import {FormCriarPersonagens} from "../npc/npc-form.component";
-import {DanoStorageComponent} from "../storage/dano-storage.component";
+import { Component } from '@angular/core';
+import { Personagem } from '../models/personagem.model';
+import { FormCriarPersonagens } from "../npc/npc-form.component";
+import { DanoStorageComponent } from "../storage/dano-storage.component";
 
 @Component({
   selector: 'game',
@@ -12,8 +12,10 @@ export class GameComponent {
 
   player: Personagem = FormCriarPersonagens.criar();
   npc: Personagem = FormCriarPersonagens.criar();
+  turno: boolean;
 
   constructor(private _danoStorage: DanoStorageComponent) {
+    this.turno = _danoStorage.turno;
   }
 
   efetuarAtaque(parteDoCorpo: string) {
@@ -40,6 +42,11 @@ export class GameComponent {
     }
 
     this.npc.vida -= this.calcularDano(parteDoCorpo);
+    console.log(this._danoStorage.turno);
+    console.log(!this._danoStorage.turno);
+    
+    this._danoStorage.turno = !this._danoStorage.turno;
+    // this.turno = this._danoStorage.turno;
 
     if (this.npc.vida <= 0) {
       alert('Você venceu!');
@@ -50,13 +57,13 @@ export class GameComponent {
   calcularDano(parteDoCorpo: string): number {
     switch (parteDoCorpo) {
       case 'bracos':
-        return 10;
+        return this._danoStorage.getDano();
       case 'pernas':
-        return 10;
+        return this._danoStorage.getDano();
       case 'torso':
-        return 20;
+        return this._danoStorage.getDano();
       case 'cabeca':
-        return 30;
+        return this._danoStorage.getDano();
       default:
         return 0;
     }

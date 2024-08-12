@@ -7,7 +7,7 @@
 
 [X] Implementar em todos os pontos;
 
-[ ] Implementar regra de acerto para cada parte do corpo;
+[X] Implementar regra de acerto para cada parte do corpo;
 
 [ ] Ajustar variaveis dos pontos para mostrar valores reais;
 
@@ -15,6 +15,6 @@
 
 [ ] Melhorar css do painel;
 
-[ ] Adicionar probabilidade de acerto dos tiros;
+[X] Adicionar probabilidade de acerto dos tiros;
 
 [ ] Ação no NPC ser automatica (component roleta para definir onde o npc irá atacar);
