@@ -12,18 +12,10 @@ export class GameComponent {
 
   player: Personagem = FormCriarPersonagens.criar();
   npc: Personagem = FormCriarPersonagens.criar();
-  turno: boolean;
 
-  constructor(private _danoStorage: DanoStorageComponent) {
-    this.turno = _danoStorage.turno;
-  }
+  constructor(public _danoStorage: DanoStorageComponent) {}
 
   efetuarAtaque(parteDoCorpo: string) {
-    if (!this.npc) {
-      console.error('NPC não definido!');
-      return;
-    }
-
     this._danoStorage.setParteCorpo(parteDoCorpo);
 
     switch (parteDoCorpo) {
@@ -42,11 +34,6 @@ export class GameComponent {
     }
 
     this.npc.vida -= this.calcularDano(parteDoCorpo);
-    console.log(this._danoStorage.turno);
-    console.log(!this._danoStorage.turno);
-    
-    this._danoStorage.turno = !this._danoStorage.turno;
-    // this.turno = this._danoStorage.turno;
 
     if (this.npc.vida <= 0) {
       alert('Você venceu!');

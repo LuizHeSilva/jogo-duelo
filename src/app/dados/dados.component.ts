@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, take } from 'rxjs';
 import { DanoStorageComponent } from '../storage/dano-storage.component';
 import { DadoService } from './dados.service';
 
@@ -31,14 +31,13 @@ export class DadosComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        console.log('estou sendo dentruido');
-        
         this.resultadoDado = null;
         this.resultadoAtaque = null;
+        this._danoStorage.trocarTurno();
     }
 
     rolar() {
-        this._dadoService.rolarDado(1, 20).subscribe((resultado: [{id: number, value: number}]) => {
+        this._dadoService.rolarDado(1, 20).pipe(take(1)).subscribe((resultado: [{id: number, value: number}]) => {
             this.resultadoDado = resultado[0].value;
             this.regraAtaque(this.resultadoDado);
         });
@@ -50,7 +49,7 @@ export class DadosComponent implements OnInit, OnDestroy {
 
     private atacar(parteDoCorpo: string) {
         this.attackEmit.emit(parteDoCorpo);
-      }
+    }
 
     private regraAtaque(resultadoDado: number) {
         const parteCorpo = this._danoStorage.ataque?.parteCorpo;
@@ -74,9 +73,9 @@ export class DadosComponent implements OnInit, OnDestroy {
         if (resultadoDado >= dificuldade) {
             this.resultadoAtaque = 'TÁ PORRA! ACERTOU NA CAGADA! ( ˶°ㅁ°) !!';
             this._danoStorage.setDano(dano);
-            this.setResultadoDado(this.resultadoDado);
         } else {
             this.resultadoAtaque = 'O óbvio aconteceu... vc errou! ദ്ദി ༎ຶ‿༎ຶ )';
         }
+        this.setResultadoDado(this.resultadoDado);
     }
 }

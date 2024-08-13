@@ -20,7 +20,7 @@ export class DuelControlsComponent {
 
   constructor(private _storage: DanoStorageComponent){}
   
-  async openDialog(parteDoCorpo: string) {
+  openDialog(parteDoCorpo: string) {
     this.modalConfig = {
       tituloDialog: 'Ataque',
       labelBotaoFechar: 'Atacar',
@@ -30,7 +30,7 @@ export class DuelControlsComponent {
     
     this.exibeDados = true;
     this._storage.setParteCorpo(parteDoCorpo);
-    return await this.modalComponent.open();
+    return this.modalComponent.open();
   }
 
   showDados() {

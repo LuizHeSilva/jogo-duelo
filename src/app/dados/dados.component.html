@@ -1,5 +1,9 @@
-O resultado do rolamento foi: {{ resultadoDado }}
-<br>
-<button class="button" (click)="rolar()">Rolar Dado!</button>
-<br>
-{{ resultadoAtaque }}
+<div *ngIf="resultadoDado">
+    O resultado do rolamento foi: {{ resultadoDado }}
+    <br>
+    {{ resultadoAtaque }}
+</div>
+
+<div *ngIf="!resultadoDado">
+    <button umClick class="button" (click)="rolar()">Rolar Dado!</button>
+</div>

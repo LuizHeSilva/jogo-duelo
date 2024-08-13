@@ -17,4 +17,8 @@
 
 [X] Adicionar probabilidade de acerto dos tiros;
 
+[X] Passar turno ao finalizar ataque;
+
 [ ] Ação no NPC ser automatica (component roleta para definir onde o npc irá atacar);
+
+[ ] Ajustar roleta para mostrar qual parte do corpo npc vai atacar;

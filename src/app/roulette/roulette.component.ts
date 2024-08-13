@@ -7,11 +7,13 @@ import {Component, OnInit} from '@angular/core';
 })
 export class RouletteComponent implements OnInit{
   public result: string = '';
-  public sectors: string[] = ['Cabeça', 'Torso', 'Braços', 'Pernas'];
+  public sectors: string[] = ['Cabeça', 'Torso', 'Braço Direito', 'Braço Esquerdo', 'Perna Direita', 'Perna Esquerda'];
   public sectorAngle: number = 360 / this.sectors.length;
 
   ngOnInit(): void {
-    this.girar();
+    setTimeout(() => {
+      this.girar();
+    }, 1000);
   }
 
   public girar(): void {

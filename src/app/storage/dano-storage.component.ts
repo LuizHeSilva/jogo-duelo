@@ -13,7 +13,12 @@ export class DanoStorageComponent {
 
     turno: boolean = true;
 
-    constructor() { }
+    constructor() {}
+
+    trocarTurno() {
+        console.log('trocarTurno: ', this.turno);    
+        this.turno = !this.turno;
+    }
 
     setDano(valor: number) {
         this.ataque.dano = valor;
@@ -30,6 +35,6 @@ export class DanoStorageComponent {
     getParteCorpo(): string {
         return this.ataque.parteCorpo;
     }
-
+    
     // TODO: criar método para executar o ataque e remover outputs dos components
 }

@@ -1,8 +1,11 @@
-Seu turno: {{ turno }}
-<br>
 <div class="body">
-  <!-- <player [player]="player"></player> -->
-  <npc [npc]="npc"></npc>
-  <div style="width: 200px"></div>
-  <duel-controls (attackEmit)="efetuarAtaque($event)"></duel-controls>
+  <div *ngIf="!this._danoStorage.turno">
+    <player [player]="player"></player>
+  </div>
+  
+  <div *ngIf="this._danoStorage.turno">
+    <npc [npc]="npc"></npc>
+    <div style="width: 200px"></div>
+    <duel-controls (attackEmit)="efetuarAtaque($event)"></duel-controls>
+  </div>
 </div>
