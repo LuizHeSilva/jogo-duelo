@@ -1,2 +1,3 @@
-<p>Component player aqui!</p>
-<roulette></roulette>
+<p>Turno do Bili de Quibe!</p>
+<roulette (roletaParou)="npcAtaque($event)"></roulette>
+<dados *ngIf="exibeDados" (attackEmit)="atacar($event)"></dados>

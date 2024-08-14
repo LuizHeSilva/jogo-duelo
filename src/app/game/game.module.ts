@@ -5,6 +5,7 @@ import { DuelControlsModule } from '../duel-controls/duel-controls.module';
 import { NpcModule } from '../npc/npc.module';
 import { PlayerModule } from "../player/player.module";
 import { GameComponent } from "./game.component";
+import { DialogModule } from '../dialog-content/dialog.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { GameComponent } from "./game.component";
     CommonModule,
     NpcModule,
     DuelControlsModule,
-    PlayerModule
+    PlayerModule,
+    DialogModule
 ],
   exports: [GameComponent],
   providers: [],

@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { DanoStorageComponent } from '../storage/dano-storage.component';
 
 @Component({
   selector: 'roulette',
@@ -6,9 +7,15 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./roulette.component.scss']
 })
 export class RouletteComponent implements OnInit{
+  
+  @Output() roletaParou: EventEmitter<boolean> = new EventEmitter();
+
   public result: string = '';
-  public sectors: string[] = ['Cabeça', 'Torso', 'Braço Direito', 'Braço Esquerdo', 'Perna Direita', 'Perna Esquerda'];
+  public sectors: string[] = ['cabeca', 'torso', 'braco', 'perna'];
+  // public sectors: string[] = ['Cabeça', 'Torso', 'Braço Direito', 'Braço Esquerdo', 'Perna Direita', 'Perna Esquerda'];
   public sectorAngle: number = 360 / this.sectors.length;
+
+  constructor(private _storage: DanoStorageComponent){}
 
   ngOnInit(): void {
     setTimeout(() => {
@@ -32,7 +39,12 @@ export class RouletteComponent implements OnInit{
         this.result = this.sectors[randomIndex];
         rouletteElement.style.transition = 'none';
         rouletteElement.style.transform = `rotate(${randomIndex * this.sectorAngle}deg)`;
+
+
+        this._storage.setParteCorpo(this.result);
+        this.roletaParou.emit(true);
       }, spinDuration);
     }
   }
+
 }

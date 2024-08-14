@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Personagem } from '../models/personagem.model';
 import { FormCriarPersonagens } from "../npc/npc-form.component";
 import { DanoStorageComponent } from "../storage/dano-storage.component";
+import { DialogConfigModel } from '../models/dialog-config.model';
+import { DialogComponent } from '../dialog-content/dialog.component';
 
 @Component({
   selector: 'game',
@@ -10,34 +12,49 @@ import { DanoStorageComponent } from "../storage/dano-storage.component";
 })
 export class GameComponent {
 
+  @ViewChild('modal') private modalComponent: DialogComponent;
+
   player: Personagem = FormCriarPersonagens.criar();
   npc: Personagem = FormCriarPersonagens.criar();
 
+  modalConfig: DialogConfigModel;
+
   constructor(public _danoStorage: DanoStorageComponent) {}
 
-  efetuarAtaque(parteDoCorpo: string) {
-    this._danoStorage.setParteCorpo(parteDoCorpo);
+  efetuarAtaque(personagem: Personagem) {
+    const parteDoCorpo = this._danoStorage.getParteCorpo();
 
     switch (parteDoCorpo) {
       case 'bracos':
-        this.npc.bracos -= 1;
+        personagem.bracos -= 1;
         break;
       case 'pernas':
-        this.npc.pernas -= 1;
+        personagem.pernas -= 1;
         break;
       case 'torso':
-        this.npc.torso -= 1;
+        personagem.torso -= 1;
         break;
       case 'cabeca':
-        this.npc.cabeca -= 1;
+        personagem.cabeca -= 1;
         break;
     }
 
-    this.npc.vida -= this.calcularDano(parteDoCorpo);
+    personagem.vida -= this.calcularDano(parteDoCorpo);
 
-    if (this.npc.vida <= 0) {
-      alert('Você venceu!');
-      this.resetGame();
+    if (personagem.vida <= 0) {
+      
+      this.modalConfig = {
+        tituloDialog: 'Ataque',
+        labelBotaoFechar: 'Atacar',
+        labelBotaoCancelar: 'Fechar',
+        esconderBotaoFechar(): boolean {return true;}
+      }
+      
+      this.modalComponent.open();
+
+      setTimeout(() => {
+        this.resetGame();
+      }, 5000);
     }
   }
 
@@ -56,23 +73,12 @@ export class GameComponent {
     }
   }
 
-  resetGame() {
-    this.player = {
-      nome: 'Jogador',
-      vida: 100,
-      bracos: 2,
-      pernas: 2,
-      torso: 1,
-      cabeca: 1,
-    };
+  mudarTurno() {
+    this._danoStorage.trocarTurno();
+  }
 
-    this.npc = {
-      nome: 'NPC',
-      vida: 100,
-      bracos: 2,
-      pernas: 2,
-      torso: 1,
-      cabeca: 1,
-    };
+  resetGame() {
+    this.player = FormCriarPersonagens.criar();
+    this.npc = FormCriarPersonagens.criar();
   }
 }

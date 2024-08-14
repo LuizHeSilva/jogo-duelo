@@ -8,14 +8,14 @@ import { HomeModule } from "./home/home.module";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     HomeModule,
-    GameModule
+    GameModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
