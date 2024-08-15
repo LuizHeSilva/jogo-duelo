@@ -1,9 +1,9 @@
 NPC: {{npc.vida}} | Player: {{player.vida}} | <button (click)="mudarTurno()"></button>
 <div class="body">
-  <div *ngIf="!this._danoStorage.turno">
+<!--  <div *ngIf="!this._danoStorage.turno">-->
     <player [player]="player" (attackEmit)="efetuarAtaque(player)"></player>
-  </div>
-  
+<!--  </div>-->
+
   <div *ngIf="this._danoStorage.turno">
     <npc [npc]="npc"></npc>
     <div style="width: 200px"></div>

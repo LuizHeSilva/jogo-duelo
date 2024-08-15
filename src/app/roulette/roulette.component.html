@@ -1,12 +1,10 @@
-<div class="roulette-container">
-<div class="roulette">
-    <div class="sector" *ngFor="let sector of sectors; let i = index" [style.transform]="'rotate(' + (i * sectorAngle) + 'deg)'">
-    <div class="sector-inner">
-        {{ sector }}
-    </div>
-    </div>
+<!-- draw.component.html -->
+<div class="draw-container">
+  <ul class="draw-list">
+    <li *ngFor="let item of items" [ngClass]="{'selected': item === selectedItem}">
+      {{ item }}
+    </li>
+  </ul>
+  <button (click)="startDraw()">Start Draw</button>
+  <div class="result" *ngIf="selectedItem">{{ selectedItem }}</div>
 </div>
-<!-- <button (click)="girar()">Girar</button> -->
-<p *ngIf="result">Ele irá atacar: {{ result }}</p>
-</div>
-  
