@@ -4,6 +4,8 @@ import { FormCriarPersonagens } from "../npc/npc-form.component";
 import { DanoStorageComponent } from "../storage/dano-storage.component";
 import { DialogConfigModel } from '../models/dialog-config.model';
 import { DialogComponent } from '../dialog-content/dialog.component';
+import * as timers from "timers";
+import {timer} from "rxjs";
 
 @Component({
   selector: 'game',
@@ -16,6 +18,7 @@ export class GameComponent {
 
   player: Personagem = FormCriarPersonagens.criar();
   npc: Personagem = FormCriarPersonagens.criar();
+  exibirBotaoReset: boolean = false;
 
   modalConfig: DialogConfigModel;
 
@@ -42,19 +45,17 @@ export class GameComponent {
     personagem.vida -= this.calcularDano(parteDoCorpo);
 
     if (personagem.vida <= 0) {
-      
+
       this.modalConfig = {
         tituloDialog: 'Ataque',
         labelBotaoFechar: 'Atacar',
         labelBotaoCancelar: 'Fechar',
         esconderBotaoFechar(): boolean {return true;}
       }
-      
+
       this.modalComponent.open();
 
-      setTimeout(() => {
-        this.resetGame();
-      }, 5000);
+      timer(5000).subscribe(() => this.exibirBotaoReset = true);
     }
   }
 

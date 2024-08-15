@@ -1,7 +1,7 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
-import { BehaviorSubject, Observable, take } from 'rxjs';
-import { DanoStorageComponent } from '../storage/dano-storage.component';
-import { DadoService } from './dados.service';
+import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
+import {BehaviorSubject, Observable, take, timer} from 'rxjs';
+import {DanoStorageComponent} from '../storage/dano-storage.component';
+import {DadoService} from './dados.service';
 
 @Component({
   selector: 'dados',
@@ -17,24 +17,25 @@ export class DadosComponent implements OnInit, OnDestroy {
     public resultadoDado: number;
     private resultadoDadoSubject = new BehaviorSubject<number>(0);
     public resultadoDado$: Observable<number> = this.resultadoDadoSubject.asObservable();
-    
+
     constructor(private _dadoService: DadoService,
                 private _danoStorage: DanoStorageComponent) {
     }
 
     ngOnInit(): void {
         this.resultadoDado$.subscribe(value => {
-            console.log('dentro subs resultado dado: ', value);
-            const parteCorpo = this._danoStorage.getParteCorpo();
-            this.atacar(parteCorpo);
+            if (value !== 0) {
+              console.log('dentro subs resultado dado: ', value);
+              const parteCorpo: string = this._danoStorage.getParteCorpo();
+              this.atacar(parteCorpo);
+            }
         });
 
         if (!this._danoStorage.turno) {
             this.rolar();
             this.jaPassouVez = true;
-            setTimeout(() => {
-                this._danoStorage.trocarTurno();
-            }, 5000);
+
+            timer(5000).subscribe(() => this._danoStorage.trocarTurno());
         }
     }
 
@@ -88,7 +89,7 @@ export class DadosComponent implements OnInit, OnDestroy {
         this._setResultadoDado(this.resultadoDado);
     }
 
-    private _setResultadoDado(newValue: number): void {
-        this.resultadoDadoSubject.next(newValue);
+    private _setResultadoDado(valor: number): void {
+        this.resultadoDadoSubject.next(valor);
     }
 }

@@ -1,0 +1,45 @@
+.roulette-container {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.roulette {
+  display: flex;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  overflow: hidden;
+  position: relative;
+}
+
+.roulette-item {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  transform-origin: 100% 100%;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.roulette-item:nth-child(1) { transform: rotate(0deg); }
+.roulette-item:nth-child(2) { transform: rotate(90deg); }
+.roulette-item:nth-child(3) { transform: rotate(180deg); }
+.roulette-item:nth-child(4) { transform: rotate(270deg); }
+
+.roulette-item.selected {
+  background-color: #1890ff;
+  color: white;
+}
+
+.result {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1890ff;
+  margin-top: 20px;
+}

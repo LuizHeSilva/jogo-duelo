@@ -6,21 +6,23 @@ import { NpcModule } from '../npc/npc.module';
 import { PlayerModule } from "../player/player.module";
 import { GameComponent } from "./game.component";
 import { DialogModule } from '../dialog-content/dialog.module';
+import {DirectiveModule} from "../directive/diretivas.module";
 
 @NgModule({
   declarations: [
     GameComponent,
   ],
-  imports: [
-    RouterModule.forChild([
-        { path: '', component: GameComponent }
-    ]),
-    CommonModule,
-    NpcModule,
-    DuelControlsModule,
-    PlayerModule,
-    DialogModule
-],
+    imports: [
+        RouterModule.forChild([
+            {path: '', component: GameComponent}
+        ]),
+        CommonModule,
+        NpcModule,
+        DuelControlsModule,
+        PlayerModule,
+        DialogModule,
+        DirectiveModule
+    ],
   exports: [GameComponent],
   providers: [],
 })

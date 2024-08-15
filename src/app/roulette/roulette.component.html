@@ -1,10 +1,8 @@
-<!-- draw.component.html -->
-<div class="draw-container">
-  <ul class="draw-list">
-    <li *ngFor="let item of items" [ngClass]="{'selected': item === selectedItem}">
+<div class="roulette-container">
+  <div class="roulette">
+    <div class="roulette-item" *ngFor="let item of itens" [ngClass]="{'selected': item === itemSelecionado}">
       {{ item }}
-    </li>
-  </ul>
-  <button (click)="startDraw()">Start Draw</button>
-  <div class="result" *ngIf="selectedItem">{{ selectedItem }}</div>
+    </div>
+  </div>
+  <div class="result" *ngIf="itemSelecionado">{{ itemSelecionado }}</div>
 </div>
