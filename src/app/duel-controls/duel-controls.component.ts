@@ -1,8 +1,8 @@
-import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { dialogAnimations } from '../dialog-content/dialog-animations';
 import { DialogComponent } from "../dialog-content/dialog.component";
 import { DialogConfigModel } from "../models/dialog-config.model";
-import { DanoStorageComponent } from '../storage/dano-storage.component';
+import { StorageComponent } from '../storage/storage-component.service';
 
 @Component({
   selector: 'duel-controls',
@@ -10,35 +10,42 @@ import { DanoStorageComponent } from '../storage/dano-storage.component';
   styleUrls: ['./duel-controls.component.css'],
   animations: [dialogAnimations.bounceIn]
 })
-export class DuelControlsComponent {
+export class DuelControlsComponent implements OnInit, OnDestroy{
 
-  @Output() attackEmit: EventEmitter<any> = new EventEmitter();
   @ViewChild('modal') private modalComponent: DialogComponent;
 
   modalConfig: DialogConfigModel;
-  exibeDados = false;
+  exibeDados: boolean;
 
-  constructor(private _storage: DanoStorageComponent){}
-  
+  constructor(private _storage: StorageComponent) {
+  }
+
+  ngOnInit() {
+    this._storage.exibirDados.subscribe(exibirDados => {
+      this.exibeDados = exibirDados;
+    })
+  }
+
+  ngOnDestroy(): void {
+    this._storage.exibirDados.next(false);
+  }
   openDialog(parteDoCorpo: string) {
     this.modalConfig = {
       tituloDialog: 'Ataque',
       labelBotaoFechar: 'Atacar',
       labelBotaoCancelar: 'Fechar',
-      esconderBotaoFechar(): boolean {return true;}
+      esconderBotaoFechar(): boolean {
+        return true;
+      }
     }
-    
+
     this.exibeDados = true;
     this._storage.setParteCorpo(parteDoCorpo);
     return this.modalComponent.open();
   }
 
   showDados() {
-    this.exibeDados = false;
-  }
-
-  atacar(parteDoCorpo: string) {
-    this.attackEmit.emit(parteDoCorpo);
+    this._storage.exibirDados.next(false);
   }
 
 }

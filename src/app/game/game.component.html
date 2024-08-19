@@ -1,12 +1,12 @@
-NPC: {{npc.vida}} | Player: {{player.vida}} | <button (click)="mudarTurno()"></button>
+NPC: {{npc.vida}} | Player: {{player.vida}} | <button (click)="mudarTurno()"></button> | Turno: {{ turno }}
 <div class="body">
-  <div *ngIf="!this._danoStorage.turno">
-    <player [player]="player" (attackEmit)="efetuarAtaque(player)"></player>
+  <div *ngIf="turno === Turno.NPC">
+    <player [player]="player"></player>
   </div>
 
-  <div *ngIf="this._danoStorage.turno">
+  <div *ngIf="turno === Turno.PLAYER">
     <npc [npc]="npc"></npc>
-    <duel-controls (attackEmit)="efetuarAtaque(npc)"></duel-controls>
+    <duel-controls></duel-controls>
   </div>
 </div>
 

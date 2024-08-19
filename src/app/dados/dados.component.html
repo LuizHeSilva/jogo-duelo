@@ -4,6 +4,6 @@
     {{ resultadoAtaque }}
 </div>
 
-<div *ngIf="!resultadoDado">
+<div *ngIf="!resultadoDado && turno !== Turno.NPC">
     <button umClick class="button" (click)="rolar()">Rolar Dado!</button>
 </div>

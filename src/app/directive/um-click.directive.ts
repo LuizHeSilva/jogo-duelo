@@ -1,9 +1,10 @@
-import { Directive, ElementRef, HostListener } from '@angular/core';
+import { Directive, HostListener } from '@angular/core';
 
 @Directive({selector: '[umClick]'})
 export class UmClickDirective {
 
-  constructor(private el: ElementRef) { }
+  constructor() {
+  }
 
   @HostListener('click', ['$event'])
   onClick(e: any) {

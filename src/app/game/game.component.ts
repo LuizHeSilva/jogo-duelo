@@ -1,18 +1,17 @@
-import { Component, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { Personagem } from '../models/personagem.model';
 import { FormCriarPersonagens } from "../npc/npc-form.component";
-import { DanoStorageComponent } from "../storage/dano-storage.component";
+import { StorageComponent } from "../storage/storage-component.service";
 import { DialogConfigModel } from '../models/dialog-config.model';
 import { DialogComponent } from '../dialog-content/dialog.component';
-import * as timers from "timers";
-import {timer} from "rxjs";
+import { Turno } from "../enums/turno.enum";
 
 @Component({
   selector: 'game',
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.css'],
 })
-export class GameComponent {
+export class GameComponent implements OnInit {
 
   @ViewChild('modal') private modalComponent: DialogComponent;
 
@@ -22,64 +21,28 @@ export class GameComponent {
 
   modalConfig: DialogConfigModel;
 
-  constructor(public _danoStorage: DanoStorageComponent) {}
+  turno: Turno;
 
-  efetuarAtaque(personagem: Personagem) {
-    const parteDoCorpo = this._danoStorage.getParteCorpo();
+  constructor(public _storage: StorageComponent,
+              private _ref: ChangeDetectorRef) {}
 
-    switch (parteDoCorpo) {
-      case 'bracos':
-        personagem.bracos -= 1;
-        break;
-      case 'pernas':
-        personagem.pernas -= 1;
-        break;
-      case 'torso':
-        personagem.torso -= 1;
-        break;
-      case 'cabeca':
-        personagem.cabeca -= 1;
-        break;
-    }
-
-    personagem.vida -= this.calcularDano(parteDoCorpo);
-
-    if (personagem.vida <= 0) {
-
-      this.modalConfig = {
-        tituloDialog: 'Ataque',
-        labelBotaoFechar: 'Atacar',
-        labelBotaoCancelar: 'Fechar',
-        esconderBotaoFechar(): boolean {return true;}
-      }
-
-      this.modalComponent.open();
-
-      timer(5000).subscribe(() => this.exibirBotaoReset = true);
-    }
-  }
-
-  calcularDano(parteDoCorpo: string): number {
-    switch (parteDoCorpo) {
-      case 'bracos':
-        return this._danoStorage.getDano();
-      case 'pernas':
-        return this._danoStorage.getDano();
-      case 'torso':
-        return this._danoStorage.getDano();
-      case 'cabeca':
-        return this._danoStorage.getDano();
-      default:
-        return 0;
-    }
+  ngOnInit(): void {
+    this._storage.inicializarPersonagens(this.npc, this.player);
+    this._storage.turno.subscribe(turno => {
+      this.turno = turno;
+      this._ref.detectChanges();
+    });
   }
 
   mudarTurno() {
-    this._danoStorage.trocarTurno();
+    this._storage.trocarTurno();
   }
 
   resetGame() {
     this.player = FormCriarPersonagens.criar();
     this.npc = FormCriarPersonagens.criar();
+    this.modalComponent.close()
   }
+
+  protected readonly Turno = Turno;
 }

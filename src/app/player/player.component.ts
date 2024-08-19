@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Personagem } from '../models/personagem.model';
+import { StorageComponent } from "../storage/storage-component.service";
 
 @Component({
   selector: 'player',
@@ -7,19 +8,20 @@ import { Personagem } from '../models/personagem.model';
   styleUrls: ['./player.component.css'],
 })
 
-export class PlayerComponent {
+export class PlayerComponent implements OnInit {
 
   @Input() player: Personagem;
   @Output() attackEmit: EventEmitter<any> = new EventEmitter();
 
-  exibeDados: boolean = false;
+  exibirDados: boolean;
 
-  public npcAtaque(evento: boolean) {
-    this.exibeDados = evento;
+  constructor(private _storage: StorageComponent) {
   }
 
-  atacar(parteDoCorpo: string) {
-    this.attackEmit.emit(parteDoCorpo);
+  ngOnInit() {
+    this._storage.exibirDados.subscribe(exibirDados => {
+      this.exibirDados = exibirDados;
+    })
   }
 
 }
