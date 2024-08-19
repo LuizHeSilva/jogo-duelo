@@ -29,3 +29,101 @@ button {
 button:hover {
   background-color: #0056b3;
 }
+
+/*MENU*/
+.placar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #8b5a2b;
+  padding: 15px;
+  border: 3px solid #3e2723;
+  color: #f5deb3;
+  font-family: 'Georgia', serif;
+  font-size: 20px;
+  text-shadow: 1px 1px 2px #3e2723;
+}
+
+.personagem {
+  display: flex;
+  align-items: center;
+}
+
+.nome {
+  font-weight: bold;
+  margin-right: 5px;
+  color: #ffeb3b;
+}
+
+.vida {
+  color: #ff4500;
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.divisoria {
+  margin: 0 20px;
+  font-size: 20px;
+  color: #d2b48c;
+}
+
+.turno {
+  margin-left: auto;
+  font-weight: bold;
+  font-size: 16px;
+  color: #ffe4c4;
+}
+
+.turno-texto {
+  color: #ff6347;
+  text-shadow: 1px 1px 2px #8b0000;
+}
+
+/*sangramento*/
+.damaged {
+  color: #ff4500; /* Cor de sangue */
+  animation: bleed 1.5s ease forwards;
+}
+
+@keyframes bleed {
+  0% {
+    color: #ff4500;
+  }
+  50% {
+    color: #b22222; /* Escurece um pouco a cor durante o efeito */
+    transform: translateY(0);
+  }
+  100% {
+    color: #8b0000; /* Cor final após o efeito */
+    transform: translateY(10px);
+  }
+}
+
+.damaged::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 4px;
+  height: 0;
+  background: #ff4500;
+  transform: translateX(-50%);
+  animation: drip 1.5s ease forwards;
+}
+
+@keyframes drip {
+  0% {
+    height: 0;
+    opacity: 1;
+  }
+  50% {
+    height: 20px;
+    opacity: 0.7;
+  }
+  100% {
+    height: 30px;
+    opacity: 0;
+  }
+}

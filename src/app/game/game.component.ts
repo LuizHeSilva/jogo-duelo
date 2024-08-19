@@ -22,6 +22,7 @@ export class GameComponent implements OnInit {
   modalConfig: DialogConfigModel;
 
   turno: Turno;
+  playerRecebeuDano: boolean = false;
 
   constructor(public _storage: StorageComponent,
               private _ref: ChangeDetectorRef) {}
@@ -32,6 +33,13 @@ export class GameComponent implements OnInit {
       this.turno = turno;
       this._ref.detectChanges();
     });
+  }
+
+  tomeDano() {
+    this.playerRecebeuDano = true;
+    setTimeout(() => {
+      this.playerRecebeuDano = false;
+    }, 1500); // Duração da animação
   }
 
   mudarTurno() {

@@ -1,4 +1,17 @@
-NPC: {{npc.vida}} | Player: {{player.vida}} | <button (click)="mudarTurno()"></button> | Turno: {{ turno }}
+<div class="placar">
+  <div class="personagem">
+    <span class="nome">Player</span>: <span class="vida" [ngClass]="{ 'damaged': playerRecebeuDano }">{{player.vida}}</span>
+  </div>
+  <div class="divisoria">|</div>
+  <div class="personagem">
+    <span class="nome">NPC</span>: <span class="vida" [ngClass]="{ 'damaged': playerRecebeuDano }">{{npc.vida}}</span>
+  </div>
+  <div class="turno">Turno: <span class="turno-texto">{{ turno }}</span></div>
+</div>
+
+<button (click)="tomeDano()">Piu piu</button>
+
+<!--NPC: {{npc.vida}} | Player: {{player.vida}} | <button (click)="mudarTurno()"></button> | Turno: {{ turno }}-->
 <div class="body">
   <div *ngIf="turno === Turno.NPC">
     <player [player]="player"></player>
