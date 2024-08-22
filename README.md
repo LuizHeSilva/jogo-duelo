@@ -15,12 +15,20 @@
 
 [X] Ação no NPC ser automatica (component roleta para definir onde o npc irá atacar);
 
+[X] Introduzir painel de saúde do personagem;
+
+[x] Ajustar subscribe dos dados para ajustar ataque do NPC;
+
+[X] Ajustar roleta para mostrar qual parte do corpo npc vai atacar;
+
+[X] Ajustado para aplicar o dano corretamente;
+
+[X] Animação quando toma dano;
+
+[X] Altera turno de forma automatica, sem necessidade de clicar no botao;
+
+[X] Exibir botão reset, se vida de algum jogar chega a 0;
+
 [ ] Ajustar variaveis dos pontos para mostrar valores reais;
 
-[ ] Introduzir painel de saúde do personagem;
-
 [ ] Melhorar css do painel;
-
-[ ] Ajustar subscribe dos dados para ajustar ataque do NPC;
-
-[ ] Ajustar roleta para mostrar qual parte do corpo npc vai atacar;
