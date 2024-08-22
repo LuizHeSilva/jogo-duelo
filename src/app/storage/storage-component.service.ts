@@ -20,9 +20,14 @@ export class StorageComponent {
   public player: BehaviorSubject<Personagem> = new BehaviorSubject<Personagem>(null);
   public npc: BehaviorSubject<Personagem> = new BehaviorSubject<Personagem>(null);
   public turno: BehaviorSubject<Turno> = new BehaviorSubject<Turno>(Turno.PLAYER);
+
   public roletaParou: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public resultadoAtaque: BehaviorSubject<string> = new BehaviorSubject<string>('');
   public exibirDados: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
+  public playerRecebeuDano: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public npcRecebeuDano: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public exibirBotaoReset: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor() {
     this.roletaParou.subscribe((value) => {
@@ -31,7 +36,7 @@ export class StorageComponent {
 
     this.exibirDados.subscribe(exibir => {
 
-    })
+    });
   }
 
   trocarTurno() {
@@ -66,12 +71,10 @@ export class StorageComponent {
     let personagem: Personagem = null;
 
     if (this.turno.value === Turno.PLAYER) {
-      personagem = this.player.getValue();
-    } else {
       personagem = this.npc.getValue();
+    } else {
+      personagem = this.player.getValue();
     }
-
-    console.log('Turno: ', this.turno.value, ' - Corpo: ', parteDoCorpo, ' -  personagem: ', personagem);
 
     switch (parteDoCorpo) {
       case 'bracos':
@@ -88,9 +91,23 @@ export class StorageComponent {
         break;
     }
 
-    personagem.vida -= this._calcularDano(parteDoCorpo);
+    if (this.getDano() > 0) {
+      personagem.vida -= this._calcularDano(parteDoCorpo);
+      timer(500).subscribe(() => {
+        if (this.turno.value === Turno.PLAYER) {
+          this.npcRecebeuDano.next(true);
+        } else {
+          this.playerRecebeuDano.next(true);
+        }
+      });
+    }
 
+    // estar verificar se o jogo terminou (vida personagem 0) = true
     this._verificarVidaPersonagem(personagem);
+
+    timer(2000).subscribe(() => {
+      this._posAtaque();
+    });
   }
 
   private _verificarVidaPersonagem(personagem: Personagem) {
@@ -107,8 +124,8 @@ export class StorageComponent {
 
       timer(2000).subscribe(() => {
         this.setDano(0);
-        // TODO: implementar...
-        // this.exibirBotaoReset = true;
+        // implementar para enviar o modal para component com botao de reset.
+        this.exibirBotaoReset.next(true);
       });
     }
   }
@@ -151,7 +168,16 @@ export class StorageComponent {
       this.setDano(dano);
     } else {
       this.resultadoAtaque.next('O óbvio aconteceu... vc errou! ദ്ദി ༎ຶ‿༎ຶ )');
+      this.setDano(0);
     }
+  }
+
+  private _posAtaque() {
+    if (!this.exibirBotaoReset.value) {
+      timer(2000).subscribe(() => this.trocarTurno());
+    }
+    this.playerRecebeuDano.next(false);
+    this.npcRecebeuDano.next(false);
   }
 
 }

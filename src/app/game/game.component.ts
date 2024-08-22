@@ -17,12 +17,13 @@ export class GameComponent implements OnInit {
 
   player: Personagem = FormCriarPersonagens.criar();
   npc: Personagem = FormCriarPersonagens.criar();
-  exibirBotaoReset: boolean = false;
-
+  
   modalConfig: DialogConfigModel;
-
+  
   turno: Turno;
-  playerRecebeuDano: boolean = false;
+  playerRecebeuDano: boolean;
+  npcRecebeuDano: boolean;
+  exibirBotaoReset: boolean = false;
 
   constructor(public _storage: StorageComponent,
               private _ref: ChangeDetectorRef) {}
@@ -33,13 +34,19 @@ export class GameComponent implements OnInit {
       this.turno = turno;
       this._ref.detectChanges();
     });
-  }
 
-  tomeDano() {
-    this.playerRecebeuDano = true;
-    setTimeout(() => {
-      this.playerRecebeuDano = false;
-    }, 1500); // Duração da animação
+    this._storage.playerRecebeuDano.subscribe(res => {
+      this.playerRecebeuDano = res;
+    });
+    
+    this._storage.npcRecebeuDano.subscribe(res => {
+      this.npcRecebeuDano = res;
+    });
+    
+    this._storage.exibirBotaoReset.subscribe(res => {
+      this.exibirBotaoReset = res;
+    });
+
   }
 
   mudarTurno() {

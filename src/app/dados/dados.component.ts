@@ -32,7 +32,7 @@ export class DadosComponent implements OnInit, OnDestroy {
       this.rolar();
       this.jaPassouVez = true;
 
-      timer(5000).subscribe(() => this._storage.trocarTurno());
+      // timer(5000).subscribe(() => this._storage.trocarTurno());
     }
 
     this._storage.resultadoAtaque.subscribe(resultado => {
@@ -48,9 +48,9 @@ export class DadosComponent implements OnInit, OnDestroy {
     this.resultadoDado = null;
     this.resultadoAtaque = null;
 
-    if (!this.jaPassouVez) {
-      this._storage.trocarTurno();
-    }
+    // if (!this.jaPassouVez) {
+    //   this._storage.trocarTurno();
+    // }
   }
 
   rolar() {
