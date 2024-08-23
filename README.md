@@ -51,4 +51,8 @@
 
 [ ] Implementar Acerto e Erro crítico;
 
+[ ] Escolha de personagens pré-definidas;
+
+[ ] Implementar pontuação;
+
 [Visualização de como está o projeto](https://luizhesilva.github.io/jogo-duelo/)
