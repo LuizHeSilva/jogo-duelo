@@ -31,6 +31,24 @@
 
 [ ] Ajustar variaveis dos pontos para mostrar valores reais;
 
-[ ] Melhorar css do painel;
+[X] Melhorar css do painel;
+
+[ ] No painel, definir a saúde de cada parte do corpo; 
+
+[ ] Ajustar fundo infinito para ficar sem a "travada" quando chegar ao fim da imagem;
+
+[ ] Depois que escolher onde atacar, fechar o dialog automaticamente;
+
+[ ] Adicionar outros tipos de movimentaçoes com sprites;
+
+[ ] Implementar tela de fim de jogo;
+
+[ ] Ajustar tela no NPC, pois, depois que adicionou o BG ficou dificil a visualização;
+
+[ ] Implementar entrada do nome do jogador;
+
+[ ] Implementar atributos;
+
+[ ] Implementar Acerto e Erro crítico;
 
 [Visualização de como está o projeto](https://luizhesilva.github.io/jogo-duelo/)
