@@ -7,22 +7,24 @@ import { PlayerModule } from "../player/player.module";
 import { GameComponent } from "./game.component";
 import { DialogModule } from '../dialog-content/dialog.module';
 import {DirectiveModule} from "../directive/diretivas.module";
+import { SpriteModule } from "../sprite/sprite.module";
 
 @NgModule({
   declarations: [
     GameComponent,
   ],
-    imports: [
-        RouterModule.forChild([
-            {path: '', component: GameComponent}
-        ]),
-        CommonModule,
-        NpcModule,
-        DuelControlsModule,
-        PlayerModule,
-        DialogModule,
-        DirectiveModule
-    ],
+  imports: [
+    RouterModule.forChild([
+      {path: '', component: GameComponent}
+    ]),
+    CommonModule,
+    NpcModule,
+    DuelControlsModule,
+    PlayerModule,
+    DialogModule,
+    DirectiveModule,
+    SpriteModule
+  ],
   exports: [GameComponent],
   providers: [],
 })

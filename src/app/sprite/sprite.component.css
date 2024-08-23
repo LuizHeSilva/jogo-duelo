@@ -1,0 +1,18 @@
+.sprite {
+  width: 128px; /* Largura de um frame do sprite */
+  height: 128px; /* Altura de um frame do sprite */
+  background-image: url('/assets/cowboy2.png');
+  background-repeat: no-repeat;
+  background-position: 128px 0; /* Para 10 frames de 64px cada */
+  /* Configura a animação */
+  animation: play 1s steps(4) infinite; /* Ajuste o número de frames e duração conforme necessário */
+}
+
+@keyframes play {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -512px 0; /* Ajuste conforme o número total de frames (64px * número de frames) */
+  }
+}

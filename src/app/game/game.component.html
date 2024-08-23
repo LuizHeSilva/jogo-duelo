@@ -9,6 +9,8 @@
   <div class="turno">Turno: <span class="turno-texto">{{ turno }}</span></div>
 </div>
 
+<app-sprite [spriteWidth]="64" [spriteHeight]="64" [frameCount]="10"></app-sprite>
+
 <div class="body">
   <div class="esquerda" *ngIf="turno === Turno.NPC">
     <player [player]="player"></player>
