@@ -10,11 +10,11 @@
 </div>
 
 <div class="body">
-  <div *ngIf="turno === Turno.NPC">
+  <div class="esquerda" *ngIf="turno === Turno.NPC">
     <player [player]="player"></player>
   </div>
 
-  <div *ngIf="turno === Turno.PLAYER">
+  <div class="direita" *ngIf="turno === Turno.PLAYER">
     <npc [npc]="npc"></npc>
     <duel-controls></duel-controls>
   </div>

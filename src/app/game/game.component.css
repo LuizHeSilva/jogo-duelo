@@ -2,7 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   margin: 0;
   background-color: #f0f0f0;
 }
@@ -11,6 +12,11 @@
   display: flex;
   justify-content: space-around;
   margin-top: 50px;
+}
+
+.direita, .esquerda {
+  flex: 1; /* Cada lado ocupa 50% do espaço */
+  padding: 20px; /* Espaçamento interno */
 }
 
 .controls {

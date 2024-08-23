@@ -1,8 +1,25 @@
-<div class="character-status">
-  <h2>{{ npc.nome }}</h2>
-  <p>Saúde: {{ npc.vida }}</p>
-  <p>Braços: {{ npc.bracos }}</p>
-  <p>Pernas: {{ npc.pernas }}</p>
-  <p>Torso: {{ npc.torso }}</p>
-  <p>Cabeça: {{ npc.cabeca }}</p>
+
+<div class="status-panel">
+  <div class="status-header">
+    <span class="">Nome: {{ npc.nome }}</span> <br>
+    <span class="">Saúde: 80/100</span>
+  </div>
+  <div class="status-body">
+    <div class="status-item">
+      <span class="status-label">Cabeça:</span>
+      <span class="status-value">60/100</span>
+    </div>
+    <div class="status-item">
+      <span class="status-label">Torso:</span>
+      <span class="status-value">70/100</span>
+    </div>
+    <div class="status-item">
+      <span class="status-label">Braços:</span>
+      <span class="status-value">80/100</span>
+    </div>
+    <div class="status-item">
+      <span class="status-label">Pernas:</span>
+      <span class="status-value">90/100</span>
+    </div>
+  </div>
 </div>

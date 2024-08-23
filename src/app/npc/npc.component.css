@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Almendra:wght@700&display=swap'); /* Fonte rústica */
+
+.status-panel {
+  width: 320px;
+  padding: 20px;
+  background-color: #d2b48c; /* Cor de fundo marrom claro */
+  border: 3px solid #8b4513; /* Borda marrom escura */
+  border-radius: 10px;
+  color: #3e2723; /* Cor do texto marrom escuro */
+  font-family: 'Almendra', serif; /* Fonte com estilo antigo */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra para dar profundidade */
+  text-transform: uppercase;
+}
+
+.status-header {
+  justify-content: space-between;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 18px;
+  border-bottom: 2px solid #8b4513; /* Linha separadora em estilo madeira */
+  padding-bottom: 10px;
+}
+
+.status-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Duas colunas para label e valor */
+  gap: 10px;
+}
+
+.status-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  background-color: #f4e7d3; /* Fundo de papel envelhecido */
+  border: 1px solid #8b4513; /* Borda marrom escura */
+  border-radius: 5px;
+}
+
+.status-label {
+  font-weight: bold;
+  color: #8b4513; /* Cor marrom escura para o label */
+}
+
+.status-value {
+  color: #3e2723; /* Cor marrom escuro para o valor */
+}

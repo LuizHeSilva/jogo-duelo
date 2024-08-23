@@ -8,9 +8,9 @@ body {
 
 /* Container do menu */
 .menu {
-    background-color: #8b4513; /* Marrom couro */
+    background-color: #d2b48c; /* Cor de fundo marrom claro */
     padding: 10px 20px;
-    border-bottom: 4px solid #d2691e; /* Borda marrom escuro */
+    border-bottom: 4px solid #8b4513; /* Borda marrom escuro */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */
 }
 
