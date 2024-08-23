@@ -32,3 +32,5 @@
 [ ] Ajustar variaveis dos pontos para mostrar valores reais;
 
 [ ] Melhorar css do painel;
+
+[Visualização de como está o projeto](https://luizhesilva.github.io/jogo-duelo/)
