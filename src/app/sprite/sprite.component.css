@@ -16,3 +16,12 @@
     background-position: -512px 0; /* Ajuste conforme o número total de frames (64px * número de frames) */
   }
 }
+
+@keyframes scrollBackground {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -100% 0; /* Move a imagem completamente para a esquerda */
+  }
+}
