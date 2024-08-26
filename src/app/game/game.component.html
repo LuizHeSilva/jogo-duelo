@@ -23,8 +23,3 @@
 </div>
 
 <button umClick *ngIf="exibirBotaoReset" class="button" (click)="resetGame()">Recomeçar Duelo!</button>
-<dialog #modal [modalConfig]="modalConfig">
-  {{npc.vida > player.vida ? 'NPC ganhou!' : 'Player ganhou!'}}
-  <br>
-  <button umClick *ngIf="exibirBotaoReset" class="button" (click)="resetGame()">Recomeçar Duelo!</button>
-</dialog>

@@ -114,7 +114,7 @@ export class StorageComponent {
     if (personagem.vida <= 0) {
 
       this.modalConfig = {
-        tituloDialog: 'Ataque',
+        tituloDialog: 'Ataqueeeeeeee',
         labelBotaoFechar: 'Atacar',
         labelBotaoCancelar: 'Fechar',
         esconderBotaoFechar(): boolean {
@@ -125,6 +125,7 @@ export class StorageComponent {
       timer(2000).subscribe(() => {
         this.setDano(0);
         // implementar para enviar o modal para component com botao de reset.
+        
         this.exibirBotaoReset.next(true);
       });
     }
@@ -174,7 +175,10 @@ export class StorageComponent {
 
   private _posAtaque() {
     if (!this.exibirBotaoReset.value) {
-      timer(2000).subscribe(() => this.trocarTurno());
+      timer(2000).subscribe(() => {
+        this.trocarTurno();
+        // this.modalComponent.close();
+      });
     }
     this.playerRecebeuDano.next(false);
     this.npcRecebeuDano.next(false);
