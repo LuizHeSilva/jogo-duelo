@@ -13,12 +13,8 @@ import { Turno } from "../enums/turno.enum";
 })
 export class GameComponent implements OnInit {
 
-  @ViewChild('modal') private modalComponent: DialogComponent;
-
   player: Personagem = FormCriarPersonagens.criar();
   npc: Personagem = FormCriarPersonagens.criar();
-  
-  modalConfig: DialogConfigModel;
   
   turno: Turno;
   playerRecebeuDano: boolean;
@@ -56,7 +52,6 @@ export class GameComponent implements OnInit {
   resetGame() {
     this.player = FormCriarPersonagens.criar();
     this.npc = FormCriarPersonagens.criar();
-    this.modalComponent.close()
   }
 
   protected readonly Turno = Turno;
