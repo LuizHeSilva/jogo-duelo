@@ -1,5 +1,6 @@
 import { Personagem } from "../models/personagem.model";
 
+// migrar para common
 export class FormCriarPersonagens {
     static criar(): Personagem {
         return {

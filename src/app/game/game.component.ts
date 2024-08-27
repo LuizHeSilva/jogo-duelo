@@ -5,6 +5,7 @@ import { StorageComponent } from "../storage/storage-component.service";
 import { DialogConfigModel } from '../models/dialog-config.model';
 import { DialogComponent } from '../dialog-content/dialog.component';
 import { Turno } from "../enums/turno.enum";
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'game',
@@ -21,6 +22,8 @@ export class GameComponent implements OnInit {
   npcRecebeuDano: boolean;
   exibirBotaoReset: boolean = false;
 
+  protected readonly Turno = Turno;
+
   constructor(public _storage: StorageComponent,
               private _ref: ChangeDetectorRef) {}
 
@@ -32,15 +35,15 @@ export class GameComponent implements OnInit {
     });
 
     this._storage.playerRecebeuDano.subscribe(res => {
-      this.playerRecebeuDano = res;
+      timer(2000).subscribe(() => this.playerRecebeuDano = res);
     });
     
     this._storage.npcRecebeuDano.subscribe(res => {
-      this.npcRecebeuDano = res;
+      timer(2000).subscribe(() => this.npcRecebeuDano = res);
     });
     
     this._storage.exibirBotaoReset.subscribe(res => {
-      this.exibirBotaoReset = res;
+      timer(2000).subscribe(() => this.exibirBotaoReset = res);
     });
 
   }
@@ -52,7 +55,7 @@ export class GameComponent implements OnInit {
   resetGame() {
     this.player = FormCriarPersonagens.criar();
     this.npc = FormCriarPersonagens.criar();
+    this._storage.exibirBotaoReset.next(false);
   }
 
-  protected readonly Turno = Turno;
 }

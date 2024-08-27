@@ -37,7 +37,7 @@
 
 [ ] Ajustar fundo infinito para ficar sem a "travada" quando chegar ao fim da imagem;
 
-[ ] Depois que escolher onde atacar, fechar o dialog automaticamente;
+[X] Depois que escolher onde atacar, fechar o dialog automaticamente;
 
 [ ] Adicionar outros tipos de movimentaçoes com sprites;
 

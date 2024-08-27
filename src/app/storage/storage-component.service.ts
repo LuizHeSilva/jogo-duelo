@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Ataque } from "../models/ataque.model";
 import { BehaviorSubject, timer } from "rxjs";
-import { Personagem } from "../models/personagem.model";
-import { DialogConfigModel } from "../models/dialog-config.model";
+import { DialogComponent } from '../dialog-content/dialog.component';
 import { Turno } from "../enums/turno.enum";
+import { Ataque } from "../models/ataque.model";
+import { Personagem } from "../models/personagem.model";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class StorageComponent {
     dano: 0
   };
 
-  modalConfig: DialogConfigModel;
+  public modalComponent: DialogComponent;
 
   public player: BehaviorSubject<Personagem> = new BehaviorSubject<Personagem>(null);
   public npc: BehaviorSubject<Personagem> = new BehaviorSubject<Personagem>(null);
@@ -49,6 +49,10 @@ export class StorageComponent {
 
   setParteCorpo(parteCorpo: string) {
     this.ataque.parteCorpo = parteCorpo;
+  }
+  
+  setModalComponent(modalComponentParametro: DialogComponent) {
+    this.modalComponent = modalComponentParametro;
   }
 
   getDano(): number {
@@ -106,25 +110,15 @@ export class StorageComponent {
     this._verificarVidaPersonagem(personagem);
 
     timer(2000).subscribe(() => {
+      this.modalComponent.close();
       this._posAtaque();
     });
   }
 
   private _verificarVidaPersonagem(personagem: Personagem) {
     if (personagem.vida <= 0) {
-
-      this.modalConfig = {
-        tituloDialog: 'Ataque',
-        labelBotaoFechar: 'Atacar',
-        labelBotaoCancelar: 'Fechar',
-        esconderBotaoFechar(): boolean {
-          return true;
-        }
-      }
-
       timer(2000).subscribe(() => {
         this.setDano(0);
-        // implementar para enviar o modal para component com botao de reset.
         this.exibirBotaoReset.next(true);
       });
     }

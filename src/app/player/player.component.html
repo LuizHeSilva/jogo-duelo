@@ -1,3 +1,6 @@
 <p>Turno do Bili de Quibe!</p>
 <roulette></roulette>
-<dados *ngIf="exibirDados"></dados>
+
+<dialog #modal [modalConfig]="modalConfig" (fecharEmit)="exibirDados == false">
+    <dados *ngIf="exibirDados"></dados>
+</dialog>

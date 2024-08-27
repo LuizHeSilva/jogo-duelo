@@ -29,18 +29,22 @@ export class DuelControlsComponent implements OnInit, OnDestroy{
   ngOnDestroy(): void {
     this._storage.exibirDados.next(false);
   }
+
   openDialog(parteDoCorpo: string) {
     this.modalConfig = {
-      tituloDialog: 'Ataque',
-      labelBotaoFechar: 'Atacar',
-      labelBotaoCancelar: 'Fechar',
+      tituloDialog: `Atacando: ${parteDoCorpo}`,
       esconderBotaoFechar(): boolean {
+        return true;
+      },
+      esconderBotaoCancelar(): boolean {
         return true;
       }
     }
 
     this.exibeDados = true;
     this._storage.setParteCorpo(parteDoCorpo);
+
+    this._storage.setModalComponent(this.modalComponent);
     return this.modalComponent.open();
   }
 
