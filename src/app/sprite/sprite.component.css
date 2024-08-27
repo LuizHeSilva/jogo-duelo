@@ -1,7 +1,7 @@
 .sprite {
   width: 128px; /* Largura de um frame do sprite */
   height: 128px; /* Altura de um frame do sprite */
-  background-image: url('./assets/cowboy2.png');
+  background-image: url('/assets/cowboy2.png');
   background-repeat: no-repeat;
   background-position: 128px 0; /* Para 10 frames de 64px cada */
   /* Configura a animação */
