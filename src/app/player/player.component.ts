@@ -1,8 +1,9 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { DialogConfigModel } from '../models/dialog-config.model';
 import { Personagem } from '../models/personagem.model';
 import { StorageComponent } from "../storage/storage-component.service";
 import { DialogComponent } from '../dialog-content/dialog.component';
+import { Turno } from '../enums/turno.enum';
 
 @Component({
   selector: 'player',
@@ -10,7 +11,7 @@ import { DialogComponent } from '../dialog-content/dialog.component';
   styleUrls: ['./player.component.css'],
 })
 
-export class PlayerComponent implements OnInit {
+export class PlayerComponent implements OnInit, OnDestroy {
 
   @Input() player: Personagem;
   @Output() attackEmit: EventEmitter<any> = new EventEmitter();
@@ -23,13 +24,22 @@ export class PlayerComponent implements OnInit {
   constructor(private _storage: StorageComponent) {
   }
 
+  // TODO: nao está removendo a referencia de quando fecha;
+
   ngOnInit() {
     this._storage.exibirDados.subscribe(exibirDados => {
       this.exibirDados = exibirDados;
 
-      this.openDialog(this._storage.getParteCorpo());
-      this._storage.setModalComponent(this.modalComponent);
+      if (this._storage.turno.value === Turno.NPC) {
+        this.openDialog(this._storage.getParteCorpo());
+        this._storage.setModalComponent(this.modalComponent);
+      }
     })
+  }
+
+  ngOnDestroy(): void {
+    this.modalComponent.close();
+    this.modalComponent = null;
   }
 
   openDialog(parteDoCorpo: string) {
