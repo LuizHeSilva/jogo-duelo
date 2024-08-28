@@ -50,7 +50,7 @@ export class StorageComponent {
   setParteCorpo(parteCorpo: string) {
     this.ataque.parteCorpo = parteCorpo;
   }
-  
+
   setModalComponent(modalComponentParametro: DialogComponent) {
     this.modalComponent = modalComponentParametro;
   }
@@ -106,7 +106,6 @@ export class StorageComponent {
       });
     }
 
-    // estar verificar se o jogo terminou (vida personagem 0) = true
     this._verificarVidaPersonagem(personagem);
 
     timer(2000).subscribe(() => {
@@ -120,6 +119,7 @@ export class StorageComponent {
       timer(2000).subscribe(() => {
         this.setDano(0);
         this.exibirBotaoReset.next(true);
+        this.turno.next(Turno.FIMJOGO);
       });
     }
   }
@@ -142,7 +142,7 @@ export class StorageComponent {
   private _regraAtaque(resultadoDado: number) {
     switch (this.getParteCorpo()) {
       case 'cabeca':
-        this._resultadoDoAtaque(resultadoDado, 18, 20);
+        this._resultadoDoAtaque(resultadoDado, 1, 20);
         break;
       case 'torso':
         this._resultadoDoAtaque(resultadoDado, 12, 10);

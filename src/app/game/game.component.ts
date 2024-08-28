@@ -5,7 +5,7 @@ import { StorageComponent } from "../storage/storage-component.service";
 import { DialogConfigModel } from '../models/dialog-config.model';
 import { DialogComponent } from '../dialog-content/dialog.component';
 import { Turno } from "../enums/turno.enum";
-import { timer } from 'rxjs';
+import { delay, timer } from 'rxjs';
 
 @Component({
   selector: 'game',
@@ -16,7 +16,7 @@ export class GameComponent implements OnInit {
 
   player: Personagem = FormCriarPersonagens.criar();
   npc: Personagem = FormCriarPersonagens.criar();
-  
+
   turno: Turno;
   playerRecebeuDano: boolean;
   npcRecebeuDano: boolean;
@@ -34,28 +34,18 @@ export class GameComponent implements OnInit {
       this._ref.detectChanges();
     });
 
-    this._storage.playerRecebeuDano.subscribe(res => {
-      timer(2000).subscribe(() => this.playerRecebeuDano = res);
-    });
-    
-    this._storage.npcRecebeuDano.subscribe(res => {
-      timer(2000).subscribe(() => this.npcRecebeuDano = res);
-    });
-    
-    this._storage.exibirBotaoReset.subscribe(res => {
-      timer(2000).subscribe(() => this.exibirBotaoReset = res);
-    });
+    this._storage.playerRecebeuDano.pipe(delay(2000))
+      .subscribe(res => this.playerRecebeuDano = res);
 
+    this._storage.npcRecebeuDano.pipe(delay(2000))
+      .subscribe(res => this.npcRecebeuDano = res);
+
+    this._storage.exibirBotaoReset.pipe(delay(2000))
+      .subscribe(res => this.exibirBotaoReset = res);
   }
 
   mudarTurno() {
     this._storage.trocarTurno();
-  }
-
-  resetGame() {
-    this.player = FormCriarPersonagens.criar();
-    this.npc = FormCriarPersonagens.criar();
-    this._storage.exibirBotaoReset.next(false);
   }
 
 }

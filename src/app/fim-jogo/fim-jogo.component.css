@@ -1,0 +1,36 @@
+.game-over-screen {
+  margin-top: 20%;
+  text-align: center;
+  border: 5px solid #8b4513;
+  border-radius: 15px;
+  padding: 20px;
+  background-color: #deb887;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.titulo {
+  font-size: 3em;
+  color: #8b4513;
+  text-shadow: 2px 2px #000;
+}
+
+.vencedor {
+  font-size: 2em;
+  color: #8b4513;
+  margin: 20px 0;
+}
+
+.botao-restart {
+  padding: 10px 20px;
+  font-size: 1.5em;
+  color: #fff;
+  background-color: #8b4513;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-shadow: 2px 2px #000;
+}
+
+.botao-restart:hover {
+  background-color: #a0522d;
+}

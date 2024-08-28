@@ -8,6 +8,7 @@ import { GameComponent } from "./game.component";
 import { DialogModule } from '../dialog-content/dialog.module';
 import {DirectiveModule} from "../directive/diretivas.module";
 import { SpriteModule } from "../sprite/sprite.module";
+import { FimJogoModule } from "../fim-jogo/fim-jogo.module";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { SpriteModule } from "../sprite/sprite.module";
     PlayerModule,
     DialogModule,
     DirectiveModule,
-    SpriteModule
+    SpriteModule,
+    FimJogoModule
   ],
   exports: [GameComponent],
   providers: [],

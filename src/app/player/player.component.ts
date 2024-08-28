@@ -24,8 +24,6 @@ export class PlayerComponent implements OnInit, OnDestroy {
   constructor(private _storage: StorageComponent) {
   }
 
-  // TODO: nao está removendo a referencia de quando fecha;
-
   ngOnInit() {
     this._storage.exibirDados.subscribe(exibirDados => {
       this.exibirDados = exibirDados;

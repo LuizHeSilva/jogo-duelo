@@ -9,17 +9,17 @@
   <div class="turno">Turno: <span class="turno-texto">{{ turno }}</span></div>
 </div>
 
-<app-sprite [spriteWidth]="64" [spriteHeight]="64" [frameCount]="10"></app-sprite>
+<!--<app-sprite [spriteWidth]="64" [spriteHeight]="64" [frameCount]="10"></app-sprite>-->
 
 <div class="body">
-  <div class="esquerda" *ngIf="turno === Turno.NPC">
+  <div *ngIf="turno === Turno.NPC">
     <player [player]="player"></player>
   </div>
 
-  <div class="direita" *ngIf="turno === Turno.PLAYER">
-    <npc [npc]="npc"></npc>
-    <duel-controls></duel-controls>
+  <div class="game-container" *ngIf="turno === Turno.PLAYER">
+    <npc class="esquerda" [npc]="npc"></npc>
+    <duel-controls class="direita"></duel-controls>
   </div>
-</div>
 
-<button umClick *ngIf="exibirBotaoReset" class="button" (click)="resetGame()">Recomeçar Duelo!</button>
+  <fim-jogo *ngIf="turno === Turno.FIMJOGO"></fim-jogo>
+</div>

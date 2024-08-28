@@ -41,7 +41,7 @@
 
 [ ] Adicionar outros tipos de movimentaçoes com sprites;
 
-[ ] Implementar tela de fim de jogo;
+[X] Implementar tela de fim de jogo;
 
 [ ] Ajustar tela no NPC, pois, depois que adicionou o BG ficou dificil a visualização;
 

@@ -70,7 +70,7 @@ body, html {
   background-repeat: repeat-x;
   background-size: auto 100%;
   background-position: 0 0;
-  animation: scrollBackground 5s linear infinite;
+  animation: scrollBackground 15s linear infinite;
   z-index: -1;
 }
 
@@ -79,6 +79,6 @@ body, html {
     background-position: 0 0;
   }
   to {
-    background-position: -100% 0; /* Move o fundo completamente para a esquerda */
+    background-position: -200% 0; /* Move o fundo completamente para a esquerda */
   }
 }

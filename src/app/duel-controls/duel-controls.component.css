@@ -62,30 +62,14 @@
   height: 20px;
   background-color: #333;
   border-radius: 50%;
-  position: absolute; /* Altera a posição para absolute */
-  top: 50%; /* Posiciona verticalmente no meio */
-  left: 50%; /* Posiciona horizontalmente no meio */
+  position: absolute;
+  top: 50%;
+  left: 50%;
   transform: translate(
     -50%,
     -50%
-  ); /* Ajusta o círculo para que fique centralizado */
+  );
   cursor: pointer;
-}
-
-.tooltip {
-  display: none;
-  position: absolute;
-  background-color: #333;
-  color: #fff;
-  padding: 5px;
-  border-radius: 3px;
-  font-size: 12px;
-  white-space: nowrap;
-  z-index: 999;
-  top: 30px; /* Ajuste conforme necessário */
-  left: 50%; /* Alinha ao meio do círculo */
-  transform: translateX(-50%);
-  text-align: center;
 }
 
 .circulo:hover .tooltip {
