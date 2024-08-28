@@ -1,5 +1,13 @@
 <div class="home-container">
     <h1>Bem-vindo ao Jogo de Duelo!</h1>
     <p>Recorde de Pontuação: {{ highScore }}</p>
-    <button (click)="startGame()">Iniciar Jogo</button>
+    <button *ngIf="!exibirInputNome" (click)="iniciarJogo()">Iniciar Jogo</button>
+    
+    <div style="margin-top: 20px;" *ngIf="exibirInputNome">
+        <input id="nomeJogador" [(ngModel)]="nomeJogador" [required]="true" type="text"/>
+    </div>
+
+    <div style="margin-top: 20px;" *ngIf="exibirInputNome && nomeJogador">
+        <button (click)="redirecionar()">🃏 Hora do duelo 🎴</button>
+    </div>
 </div>

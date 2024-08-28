@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { StorageComponent } from "../storage/storage-component.service";
-import { FormCriarPersonagens } from "../npc/npc-form.component";
+import { Router } from '@angular/router';
 import { Turno } from "../enums/turno.enum";
+import { StorageComponent } from "../storage/storage-component.service";
 
 @Component({
   selector: 'fim-jogo',
@@ -13,6 +13,7 @@ export class FimJogoComponent implements OnInit {
   vencedor: string = '';
 
   constructor(public _storage: StorageComponent,
+              private router: Router,
               private _ref: ChangeDetectorRef) {}
 
   ngOnInit(): void {
@@ -24,8 +25,8 @@ export class FimJogoComponent implements OnInit {
   }
 
   restartGame() {
-    this._storage.player.next(FormCriarPersonagens.criar());
-    this._storage.npc.next(FormCriarPersonagens.criar());
+    this.router.navigate(['/home']);
+    this._storage.inicializarPersonagens();
     this._storage.turno.next(Turno.PLAYER);
   }
 

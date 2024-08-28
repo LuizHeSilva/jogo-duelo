@@ -1,9 +1,9 @@
 <div *ngIf="resultadoDado">
     O resultado do rolamento foi: {{ resultadoDado }}
     <br>
-    {{ resultadoAtaque }}
+    {{ resultadoAtaque$ | async }}
 </div>
 
-<div *ngIf="!resultadoDado && turno !== Turno.NPC">
+<div *ngIf="!resultadoDado && (turno$ | async) !== Turno.NPC">
     <button umClick class="button" (click)="rolar()">Rolar Dado!</button>
 </div>

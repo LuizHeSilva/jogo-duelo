@@ -13,16 +13,14 @@ import { Turno } from '../enums/turno.enum';
 
 export class PlayerComponent implements OnInit, OnDestroy {
 
-  @Input() player: Personagem;
-  @Output() attackEmit: EventEmitter<any> = new EventEmitter();
-
   @ViewChild('modal') private modalComponent: DialogComponent;
 
   modalConfig: DialogConfigModel;
+  player: Personagem;
+
   exibirDados: boolean;
 
-  constructor(private _storage: StorageComponent) {
-  }
+  constructor(private _storage: StorageComponent) {}
 
   ngOnInit() {
     this._storage.exibirDados.subscribe(exibirDados => {
@@ -32,7 +30,11 @@ export class PlayerComponent implements OnInit, OnDestroy {
         this.openDialog(this._storage.getParteCorpo());
         this._storage.setModalComponent(this.modalComponent);
       }
-    })
+    });
+
+    this._storage.player.subscribe(player => {
+      this.player = player;
+    });
   }
 
   ngOnDestroy(): void {

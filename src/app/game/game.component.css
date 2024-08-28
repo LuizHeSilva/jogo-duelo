@@ -14,7 +14,11 @@
 
 .direita, .esquerda {
   flex: 1; /* Cada lado ocupa 50% do espaço */
-  padding: 20px; /* Espaçamento interno */
+  padding: 50px; /* Espaçamento interno */
+}
+
+.esquerda {
+  margin-top: 50px;
 }
 
 .controls {

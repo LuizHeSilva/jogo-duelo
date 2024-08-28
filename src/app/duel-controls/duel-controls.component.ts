@@ -11,24 +11,18 @@ import { Turno } from '../enums/turno.enum';
   styleUrls: ['./duel-controls.component.css'],
   animations: [dialogAnimations.bounceIn]
 })
-export class DuelControlsComponent implements OnInit, OnDestroy{
+export class DuelControlsComponent implements OnDestroy{
 
   @ViewChild('modal') private modalComponent: DialogComponent;
 
   modalConfig: DialogConfigModel;
-  exibeDados: boolean;
+  exibeDados$ = this._storage.exibirDados;
 
   constructor(private _storage: StorageComponent) {
   }
 
-  ngOnInit() {
-    this._storage.exibirDados.subscribe(exibirDados => {
-      this.exibeDados = exibirDados;
-    })
-  }
-
   ngOnDestroy(): void {
-    this._storage.exibirDados.next(false);
+    this._storage.setExibirDados(false);
     this.modalComponent.close();
   }
 
@@ -44,7 +38,7 @@ export class DuelControlsComponent implements OnInit, OnDestroy{
         }
       }
 
-      this.exibeDados = true;
+      this.exibeDados$.next(true);
       this._storage.setParteCorpo(parteDoCorpo);
 
       this._storage.setModalComponent(this.modalComponent);
@@ -55,7 +49,7 @@ export class DuelControlsComponent implements OnInit, OnDestroy{
   }
 
   showDados() {
-    this._storage.exibirDados.next(false);
+    this._storage.setExibirDados(false);
   }
 
 }

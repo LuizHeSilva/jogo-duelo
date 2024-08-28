@@ -11,10 +11,12 @@ import { Turno } from "../enums/turno.enum";
 })
 export class DadosComponent implements OnInit, OnDestroy {
 
-  public turno: Turno;
   public jaPassouVez: boolean = false;
-  public resultadoAtaque: string;
   public resultadoDado: number;
+
+  public turno$ = this._storage.turno.asObservable();
+  public resultadoAtaque$ = this._storage.resultadoAtaque.asObservable();
+  
   private resultadoDadoSubject = new BehaviorSubject<number>(null);
 
   constructor(private _dadoService: DadoService,
@@ -28,29 +30,15 @@ export class DadosComponent implements OnInit, OnDestroy {
       }
     });
 
-    if (this._storage.turno.value === Turno.NPC) {
+    if (this._storage.getTurno() === Turno.NPC) {
       this.rolar();
       this.jaPassouVez = true;
-
-      // timer(5000).subscribe(() => this._storage.trocarTurno());
     }
-
-    this._storage.resultadoAtaque.subscribe(resultado => {
-      this.resultadoAtaque = resultado;
-    });
-
-    this._storage.turno.subscribe(turno => {
-      this.turno = turno;
-    });
   }
 
   ngOnDestroy(): void {
     this.resultadoDado = null;
-    this.resultadoAtaque = null;
-
-    // if (!this.jaPassouVez) {
-    //   this._storage.trocarTurno();
-    // }
+    this.resultadoAtaque$ = null;
   }
 
   rolar() {
@@ -59,8 +47,6 @@ export class DadosComponent implements OnInit, OnDestroy {
       this._setResultadoDado(this.resultadoDado);
     });
   }
-
-
 
   private _setResultadoDado(valor: number): void {
     this.resultadoDadoSubject.next(valor);

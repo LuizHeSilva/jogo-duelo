@@ -39,13 +39,13 @@
 
 [X] Depois que escolher onde atacar, fechar o dialog automaticamente;
 
-[ ] Adicionar outros tipos de movimentaçoes com sprites;
+[.] Adicionar outros tipos de movimentaçoes com sprites;
 
 [X] Implementar tela de fim de jogo;
 
-[ ] Ajustar tela no NPC, pois, depois que adicionou o BG ficou dificil a visualização;
+[/] Ajustar tela no NPC, pois, depois que adicionou o BG ficou dificil a visualização;
 
-[ ] Implementar entrada do nome do jogador;
+[X] Implementar entrada do nome do jogador;
 
 [ ] Implementar atributos;
 

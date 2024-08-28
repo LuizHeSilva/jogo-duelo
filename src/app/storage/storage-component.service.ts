@@ -4,6 +4,7 @@ import { DialogComponent } from '../dialog-content/dialog.component';
 import { Turno } from "../enums/turno.enum";
 import { Ataque } from "../models/ataque.model";
 import { Personagem } from "../models/personagem.model";
+import { FormCriarPersonagens } from '../npc/npc-form.component';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,8 @@ export class StorageComponent {
   };
 
   public modalComponent: DialogComponent;
+
+  public nomeJogador: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
   public player: BehaviorSubject<Personagem> = new BehaviorSubject<Personagem>(null);
   public npc: BehaviorSubject<Personagem> = new BehaviorSubject<Personagem>(null);
@@ -30,13 +33,7 @@ export class StorageComponent {
   public exibirBotaoReset: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor() {
-    this.roletaParou.subscribe((value) => {
-      this.exibirDados.next(true);
-    });
-
-    this.exibirDados.subscribe(exibir => {
-
-    });
+    this.roletaParou.subscribe(() => this.exibirDados.next(true));
   }
 
   trocarTurno() {
@@ -63,9 +60,89 @@ export class StorageComponent {
     return this.ataque.parteCorpo;
   }
 
-  inicializarPersonagens(npc: Personagem, player: Personagem) {
-    this.npc.next(npc);
-    this.player.next(player);
+  public getNomeJogador(): string {
+    return this.nomeJogador.getValue();
+  }
+
+  public setNomeJogador(value: string) {
+    this.nomeJogador.next(value);
+  }
+
+  public getPlayer(): Personagem {
+    return this.player.getValue();
+  }
+
+  public setPlayer(value: Personagem) {
+    this.player.next(value);
+  }
+
+  public getNpc(): Personagem {
+    return this.npc.getValue();
+  }
+
+  public setNpc(value: Personagem) {
+    this.npc.next(value);
+  }
+
+  public getTurno(): Turno {
+    return this.turno.getValue();
+  }
+
+  public setTurno(value: Turno) {
+    this.turno.next(value);
+  }
+
+  public getRoletaParou(): boolean {
+    return this.roletaParou.getValue();
+  }
+
+  public setRoletaParou(value: boolean) {
+    this.roletaParou.next(value);
+  }
+
+  public getResultadoAtaque(): string {
+    return this.resultadoAtaque.getValue();
+  }
+
+  public setResultadoAtaque(value: string) {
+    this.resultadoAtaque.next(value);
+  }
+
+  public getExibirDados(): boolean {
+    return this.exibirDados.getValue();
+  }
+
+  public setExibirDados(value: boolean) {
+    this.exibirDados.next(value);
+  }
+
+  public getPlayerRecebeuDano(): boolean {
+    return this.playerRecebeuDano.getValue();
+  }
+
+  public setPlayerRecebeuDano(value: boolean) {
+    this.playerRecebeuDano.next(value);
+  }
+
+  public getNpcRecebeuDano(): boolean {
+    return this.npcRecebeuDano.getValue();
+  }
+
+  public setNpcRecebeuDano(value: boolean) {
+    this.npcRecebeuDano.next(value);
+  }
+
+  public getExibirBotaoReset(): boolean {
+    return this.exibirBotaoReset.getValue();
+  }
+
+  public setExibirBotaoReset(value: boolean) {
+    this.exibirBotaoReset.next(value);
+  }
+
+  inicializarPersonagens() {
+    this.npc.next(FormCriarPersonagens.criar(this.nomeJogador.value));
+    this.player.next(FormCriarPersonagens.criar(this.nomeJogador.value));
   }
 
   efetuarAtaque(resultadoDado: number) {

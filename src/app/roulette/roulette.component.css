@@ -5,6 +5,7 @@
 }
 
 .roulette {
+  background-color: #d2b48c;
   display: flex;
   width: 300px;
   height: 300px;

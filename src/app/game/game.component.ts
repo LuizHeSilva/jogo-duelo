@@ -1,11 +1,8 @@
-import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-import { Personagem } from '../models/personagem.model';
-import { FormCriarPersonagens } from "../npc/npc-form.component";
-import { StorageComponent } from "../storage/storage-component.service";
-import { DialogConfigModel } from '../models/dialog-config.model';
-import { DialogComponent } from '../dialog-content/dialog.component';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { delay } from 'rxjs';
 import { Turno } from "../enums/turno.enum";
-import { delay, timer } from 'rxjs';
+import { Personagem } from '../models/personagem.model';
+import { StorageComponent } from "../storage/storage-component.service";
 
 @Component({
   selector: 'game',
@@ -14,8 +11,8 @@ import { delay, timer } from 'rxjs';
 })
 export class GameComponent implements OnInit {
 
-  player: Personagem = FormCriarPersonagens.criar();
-  npc: Personagem = FormCriarPersonagens.criar();
+  player: Personagem;
+  npc: Personagem;
 
   turno: Turno;
   playerRecebeuDano: boolean;
@@ -28,20 +25,26 @@ export class GameComponent implements OnInit {
               private _ref: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-    this._storage.inicializarPersonagens(this.npc, this.player);
+    this._storage.player.subscribe(player => {
+      this.player = player;
+    });
+
+    this._storage.npc.subscribe(npc => {
+      this.npc = npc;
+    });
+
+    this._storage.inicializarPersonagens();
+    
     this._storage.turno.subscribe(turno => {
       this.turno = turno;
       this._ref.detectChanges();
     });
 
-    this._storage.playerRecebeuDano.pipe(delay(2000))
-      .subscribe(res => this.playerRecebeuDano = res);
+    this._storage.playerRecebeuDano.pipe(delay(2000)).subscribe(res => this.playerRecebeuDano = res);
 
-    this._storage.npcRecebeuDano.pipe(delay(2000))
-      .subscribe(res => this.npcRecebeuDano = res);
+    this._storage.npcRecebeuDano.pipe(delay(2000)).subscribe(res => this.npcRecebeuDano = res);
 
-    this._storage.exibirBotaoReset.pipe(delay(2000))
-      .subscribe(res => this.exibirBotaoReset = res);
+    this._storage.exibirBotaoReset.pipe(delay(2000)).subscribe(res => this.exibirBotaoReset = res);
   }
 
   mudarTurno() {
