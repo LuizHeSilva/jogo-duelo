@@ -17,7 +17,7 @@ export class SpriteComponent implements OnInit {
     this.spriteStyle = {
       width: `${this.spriteWidth}px`,
       height: `${this.spriteHeight}px`,
-      backgroundImage: 'url(./assets/cowboy2.png)',
+      backgroundImage: 'url(/assets/cowboy2.png)',
       backgroundRepeat: 'no-repeat',
       backgroundPosition: '0 0',
       animation: `play 1s steps(${this.frameCount}) infinite`
