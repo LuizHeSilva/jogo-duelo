@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { delay } from 'rxjs';
-import { Turno } from "../enums/turno.enum";
-import { Personagem } from '../models/personagem.model';
+import { Turno } from "../common/enums/turno.enum";
+import { Personagem } from '../common/models/personagem.model';
 import { StorageComponent } from "../storage/storage-component.service";
 
 @Component({

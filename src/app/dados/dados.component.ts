@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { BehaviorSubject, take, timer } from 'rxjs';
 import { StorageComponent } from '../storage/storage-component.service';
 import { DadoService } from './dados.service';
-import { Turno } from "../enums/turno.enum";
+import { Turno } from "../common/enums/turno.enum";
 
 @Component({
   selector: 'dados',

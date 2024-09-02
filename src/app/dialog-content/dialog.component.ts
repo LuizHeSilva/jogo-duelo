@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Injectable, Input, Output, TemplateRef, ViewChild } from '@angular/core';
 import { NgbModal, NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
-import { DialogConfigModel } from "../models/dialog-config.model";
+import { DialogConfigModel } from "../common/models/dialog-config.model";
 
 @Component({
   selector: 'dialog',

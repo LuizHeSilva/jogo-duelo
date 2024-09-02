@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import { Personagem } from '../models/personagem.model';
+import { Personagem } from '../common/models/personagem.model';
 
 @Component({
   selector: 'npc',

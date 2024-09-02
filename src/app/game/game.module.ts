@@ -6,7 +6,7 @@ import { NpcModule } from '../npc/npc.module';
 import { PlayerModule } from "../player/player.module";
 import { GameComponent } from "./game.component";
 import { DialogModule } from '../dialog-content/dialog.module';
-import {DirectiveModule} from "../directive/diretivas.module";
+import {DirectiveModule} from "../common/directive/diretivas.module";
 import { SpriteModule } from "../sprite/sprite.module";
 import { FimJogoModule } from "../fim-jogo/fim-jogo.module";
 

@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
-import { DialogConfigModel } from '../models/dialog-config.model';
-import { Personagem } from '../models/personagem.model';
+import { DialogConfigModel } from '../common/models/dialog-config.model';
+import { Personagem } from '../common/models/personagem.model';
 import { StorageComponent } from "../storage/storage-component.service";
 import { DialogComponent } from '../dialog-content/dialog.component';
-import { Turno } from '../enums/turno.enum';
+import { Turno } from '../common/enums/turno.enum';
 
 @Component({
   selector: 'player',

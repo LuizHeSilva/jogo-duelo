@@ -1,9 +1,9 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { dialogAnimations } from '../dialog-content/dialog-animations';
 import { DialogComponent } from "../dialog-content/dialog.component";
-import { DialogConfigModel } from "../models/dialog-config.model";
+import { DialogConfigModel } from "../common/models/dialog-config.model";
 import { StorageComponent } from '../storage/storage-component.service';
-import { Turno } from '../enums/turno.enum';
+import { Turno } from '../common/enums/turno.enum';
 
 @Component({
   selector: 'duel-controls',
