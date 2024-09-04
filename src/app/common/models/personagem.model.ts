@@ -12,5 +12,6 @@ export interface Personagem {
   bracoForte: 'DIREITO' | 'CANHOTO';
   experiencia: number;
   level: number;
+  isNpc: boolean;
   atributo: Atributo;
 }

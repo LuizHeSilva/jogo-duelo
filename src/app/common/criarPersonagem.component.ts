@@ -14,6 +14,7 @@ export class CriarPersonagens {
             bracoForte: "DIREITO",
             experiencia: 0,
             level: 0,
+            isNpc: false,
             atributo: new Atributos()
         };
     }

@@ -152,16 +152,15 @@ export class StorageComponent {
   efetuarAtaque(resultadoDado: number) {
     this._regraAtaque(resultadoDado);
 
-    const parteDoCorpo = this.getParteCorpo();
-    let personagem: Personagem = null;
-
+    let personagem: Personagem;
     if (this.turno.value === Turno.PLAYER) {
       personagem = this.npc.getValue();
+      personagem.isNpc = true;
     } else {
       personagem = this.player.getValue();
     }
 
-    switch (parteDoCorpo) {
+    switch (this.getParteCorpo()) {
     case 'cabeca':
       personagem.cabeca -= 1;
       break;
@@ -183,7 +182,7 @@ export class StorageComponent {
     }
 
     if (this.getDano() > 0) {
-      personagem.vida -= this._calcularDano(parteDoCorpo);
+      personagem.vida -= this._calcularDano(this.getParteCorpo());
       timer(500).subscribe(() => {
         if (this.turno.value === Turno.PLAYER) {
           this.npcRecebeuDano.next(true);
@@ -208,6 +207,10 @@ export class StorageComponent {
       timer(2000).subscribe(() => {
         this.setDano(0);
         this.exibirBotaoReset.next(true);
+        if (personagem.isNpc) {
+         this.turno.next(Turno.FIMDUELO);
+         return;
+        }
         this.turno.next(Turno.FIMJOGO);
       });
     }
