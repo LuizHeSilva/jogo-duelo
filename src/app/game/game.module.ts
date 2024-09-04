@@ -9,6 +9,7 @@ import { DialogModule } from '../dialog-content/dialog.module';
 import {DirectiveModule} from "../common/directive/diretivas.module";
 import { SpriteModule } from "../sprite/sprite.module";
 import { FimJogoModule } from "../fim-jogo/fim-jogo.module";
+import { DistribuidorAtributosComponent } from "../distribuir-atributos/distribuir-atributos.component";
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { FimJogoModule } from "../fim-jogo/fim-jogo.module";
   ],
   imports: [
     RouterModule.forChild([
-      {path: '', component: GameComponent}
+        { path: '', component: GameComponent }
     ]),
     CommonModule,
     NpcModule,
@@ -25,8 +26,9 @@ import { FimJogoModule } from "../fim-jogo/fim-jogo.module";
     DialogModule,
     DirectiveModule,
     SpriteModule,
-    FimJogoModule
-  ],
+    FimJogoModule,
+    DistribuidorAtributosComponent
+],
   exports: [GameComponent],
   providers: [],
 })

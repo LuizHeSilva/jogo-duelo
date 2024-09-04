@@ -11,15 +11,22 @@
 
 <!--<app-sprite [spriteWidth]="64" [spriteHeight]="64" [frameCount]="10"></app-sprite>-->
 
-<div class="body">
-  <div *ngIf="turno === Turno.NPC">
-    <player></player>
-  </div>
+<div class="container">
+  @switch (turno) {
+    @case (Turno.NPC) {
+      <player></player>
+    }
 
-  <div class="game-container" *ngIf="turno === Turno.PLAYER">
-    <npc class="esquerda" [npc]="npc"></npc>
-    <duel-controls class="direita"></duel-controls>
-  </div>
-
-  <fim-jogo *ngIf="turno === Turno.FIMJOGO"></fim-jogo>
+    @case (Turno.PLAYER) {
+      <div class="game-container">
+        <npc class="esquerda" [npc]="npc"></npc>
+        <duel-controls class="direita"></duel-controls>
+      </div>
+    }
+    
+    @case (Turno.FIMJOGO) {
+      <distribuir-atributos></distribuir-atributos>
+      <fim-jogo></fim-jogo>
+    }
+  }
 </div>
