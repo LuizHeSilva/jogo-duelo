@@ -47,6 +47,10 @@ export class GameComponent implements OnInit {
     this._storage.exibirBotaoReset.pipe(delay(2000)).subscribe(res => this.exibirBotaoReset = res);
   }
 
+  trocar() {
+    this._storage.setTurno(Turno.FIMDUELO);
+  }
+
   mudarTurno() {
     this._storage.trocarTurno();
   }

@@ -6,6 +6,7 @@
   <div class="personagem">
     <span class="nome">NPC</span>: <span class="vida" [ngClass]="{ 'damaged': npcRecebeuDano }">{{npc.vida}}</span>
   </div>
+  <div> <button (click)="trocar()">Tela Atributos</button> </div>
   <div class="turno">Turno: <span class="turno-texto">{{ turno }}</span></div>
 </div>
 
@@ -25,7 +26,6 @@
     }
 
     @case (Turno.FIMDUELO) {
-      <p>Aqui verificar se upou de lvl e disponibilizar para distribuir os pontos....</p>
       <distribuir-atributos></distribuir-atributos>
     }
 

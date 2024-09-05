@@ -2,12 +2,13 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { StorageComponent } from '../storage/storage-component.service';
 import { Turno } from "../common/enums/turno.enum";
+import { VisualizarAtributosComponent } from "./visualizar-atributos/visualizar-atributos.component";
 
 @Component({
   selector: 'distribuir-atributos',
   templateUrl: './distribuir-atributos.component.html',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, VisualizarAtributosComponent],
   styleUrls: ['./distribuir-atributos.component.css']
 })
 export class DistribuidorAtributosComponent {
@@ -33,6 +34,13 @@ export class DistribuidorAtributosComponent {
       this.atributos[atributo].atual++;
       this.atributos[atributo].total++;
       this.pontosRestantes--;
+      this.regraDistribuicaoAtributos(atributo);
+    }
+  }
+
+  regraDistribuicaoAtributos(atributo: string) {
+    if (atributo === 'resistencia') {
+      this._storage.getPlayer().vida = this._storage.getPlayer().vidaBase + (this.atributos['resistencia'].total / 2);
     }
   }
 

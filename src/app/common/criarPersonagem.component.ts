@@ -4,7 +4,8 @@ export class CriarPersonagens {
     static criar(nomeJogador?: string): Personagem {
         return {
             nome: nomeJogador ? nomeJogador : 'Bili De Quibe',
-            vida: 20,
+            vidaBase: 5,
+            vida: 5,
             cabeca: 1,
             torso: 0,
             bracoDireito: 0,
@@ -13,7 +14,7 @@ export class CriarPersonagens {
             pernaEsquerda: 0,
             bracoForte: "DIREITO",
             experiencia: 0,
-            level: 0,
+            level: 1,
             isNpc: false,
             atributo: new Atributos()
         };
@@ -29,7 +30,7 @@ export class Atributos {
     sorte: number;
 
     constructor() {
-        this.agilidade = 3;
+        this.agilidade = 0;
         this.destreza = 0;
         this.forca = 0;
         this.inteligencia = 0;

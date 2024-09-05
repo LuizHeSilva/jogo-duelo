@@ -1,21 +1,27 @@
 <div class="container">
-    <h1 class="title">Distribuição de Atributos</h1>
-    <p class="pontos-restantes">Pontos restantes: <span>{{ pontosRestantes }}</span></p>
+    <div class="corpo-div esquerda">
+        <h1 class="title">Distribuição de Atributos</h1>
+        <p class="pontos-restantes">Pontos restantes: <span>{{ pontosRestantes }}</span></p>
 
-    <div class="atributos-container">
-        @for (atributo of atributoNames; track atributo) {
-        <div class="atributo">
-            <h2>{{ atributo | titlecase }}</h2>
-            <div class="atributo-box">
-                <button class="btn" (click)="retirarPonto(atributo)">-</button>
-                <span class="atributo-value">{{ atributos[atributo].atual }}</span>
-                <button class="btn" (click)="distribuirPonto(atributo)">+</button>
+        <div class="atributos-container">
+            @for (atributo of atributoNames; track atributo) {
+            <div class="atributo">
+                <h2>{{ atributo | titlecase }}</h2>
+                <div class="atributo-box">
+                    <button class="btn" (click)="retirarPonto(atributo)">-</button>
+                    <span class="atributo-value">{{ atributos[atributo].atual }}</span>
+                    <button class="btn" (click)="distribuirPonto(atributo)">+</button>
+                </div>
+                <p class="total">Total: {{ atributos[atributo].total }}</p>
             </div>
-            <p class="total">Total: {{ atributos[atributo].total }}</p>
+            }
         </div>
-        }
+
+        <button class="reset-btn" [disabled]="pontosRestantes === maxPontos"
+            (click)="continuar()">Continuar</button>
     </div>
 
-    <button class="reset-btn" [disabled]="pontosRestantes === maxPontos"
-        (click)="continuar()">Continuar</button>
+    <div class="direita">
+        <visualizar-atributos></visualizar-atributos>
+    </div>
 </div>

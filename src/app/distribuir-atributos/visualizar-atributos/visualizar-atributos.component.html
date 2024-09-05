@@ -1,0 +1,27 @@
+<div class="panel">
+    <h1 class="title">Status</h1>
+    <div class="info">
+        <div class="item">
+            <label for="nome">Nome:</label>
+            <span id="nome">{{ personagem.nome }}</span>
+        </div>
+
+        <div class="item">
+            <label for="level">Level:</label>
+            <span id="level">{{ personagem.level }}</span>
+        </div>
+        
+        <div class="item">
+            <label for="vida">Vida:</label>
+            <span id="vida">{{ personagem.vida }}</span>
+        </div>
+        
+        <div class="item">
+            <label for="experiencia">Experiência:</label>
+            <div class="bar-container">
+                <div class="bar" [ngStyle]="{'width': personagem.experiencia + '%'}"></div>
+                <span class="bar-percent">{{ personagem.experiencia }}%</span>
+            </div>
+        </div>
+    </div>
+</div>

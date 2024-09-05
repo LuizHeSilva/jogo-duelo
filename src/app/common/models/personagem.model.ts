@@ -3,6 +3,7 @@ import { Atributo } from "./atributo.model";
 export interface Personagem {
   nome: string;
   vida: number;
+  vidaBase: number;
   cabeca: number;
   torso: number;
   bracoDireito: number;
