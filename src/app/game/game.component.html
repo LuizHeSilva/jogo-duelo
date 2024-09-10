@@ -21,11 +21,11 @@
     @case (Turno.PLAYER) {
       <div class="game-container">
         <npc class="esquerda" [npc]="npc"></npc>
-        <duel-controls class="direita"></duel-controls>
+        <personagem class="direita"></personagem>
       </div>
     }
 
-    @case (Turno.FIMDUELO) {
+    @case (Turno.ATRIBUTOS) {
       <distribuir-atributos></distribuir-atributos>
     }
 

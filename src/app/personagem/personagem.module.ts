@@ -1,17 +1,17 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { DuelControlsComponent } from "./duel-controls.component";
+import { PersonagemComponent } from "./personagem.component";
 import { DialogModule } from "../dialog-content/dialog.module";
-import {DadosModule} from "../dados/dados.module";
+import { DadosModule } from "../dados/dados.module";
 
 @NgModule({
-  declarations: [DuelControlsComponent],
+  declarations: [PersonagemComponent],
   imports: [
     CommonModule,
     DialogModule,
     DadosModule
   ],
-  exports: [DuelControlsComponent],
+  exports: [PersonagemComponent],
   providers: [],
 })
-export class DuelControlsModule { }
+export class PersonagemModule { }

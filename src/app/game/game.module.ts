@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from "@angular/router";
-import { DuelControlsModule } from '../duel-controls/duel-controls.module';
+import { PersonagemModule } from '../personagem/personagem.module';
 import { NpcModule } from '../npc/npc.module';
 import { PlayerModule } from "../player/player.module";
 import { GameComponent } from "./game.component";
@@ -21,7 +21,7 @@ import { DistribuidorAtributosComponent } from "../distribuir-atributos/distribu
     ]),
     CommonModule,
     NpcModule,
-    DuelControlsModule,
+    PersonagemModule,
     PlayerModule,
     DialogModule,
     DirectiveModule,

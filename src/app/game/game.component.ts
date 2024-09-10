@@ -34,7 +34,7 @@ export class GameComponent implements OnInit {
     });
 
     this._storage.inicializarPersonagens();
-    
+
     this._storage.turno.subscribe(turno => {
       this.turno = turno;
       this._ref.detectChanges();
@@ -48,7 +48,7 @@ export class GameComponent implements OnInit {
   }
 
   trocar() {
-    this._storage.setTurno(Turno.FIMDUELO);
+    this._storage.setTurno(Turno.ATRIBUTOS);
   }
 
   mudarTurno() {

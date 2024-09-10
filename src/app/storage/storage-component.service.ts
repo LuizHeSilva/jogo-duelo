@@ -208,7 +208,7 @@ export class StorageComponent {
         this.setDano(0);
         this.exibirBotaoReset.next(true);
         if (personagem.isNpc) {
-         this.turno.next(Turno.FIMDUELO);
+         this.turno.next(Turno.ATRIBUTOS);
          return;
         }
         this.turno.next(Turno.FIMJOGO);
@@ -276,7 +276,6 @@ export class StorageComponent {
         return of(void 0);
       }),
       catchError(error => {
-        console.error('Erro ao carregar limites de experiência', error);
         return of(void 0);
       })
     );

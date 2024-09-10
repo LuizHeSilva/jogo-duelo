@@ -6,12 +6,12 @@ import { StorageComponent } from '../storage/storage-component.service';
 import { Turno } from '../common/enums/turno.enum';
 
 @Component({
-  selector: 'duel-controls',
-  templateUrl: './duel-controls.component.html',
-  styleUrls: ['./duel-controls.component.css'],
+  selector: 'personagem',
+  templateUrl: './personagem.component.html',
+  styleUrls: ['./personagem.component.css'],
   animations: [dialogAnimations.bounceIn]
 })
-export class DuelControlsComponent implements OnDestroy{
+export class PersonagemComponent implements OnDestroy{
 
   @ViewChild('modal') private modalComponent: DialogComponent;
 

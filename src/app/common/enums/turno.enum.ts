@@ -1,6 +1,6 @@
 export enum Turno {
     PLAYER = 'PLAYER',
     NPC = 'NPC',
-    FIMDUELO = 'FIMDUELO',
+    ATRIBUTOS = 'ATRIBUTOS',
     FIMJOGO = 'FIMJOGO'
 }
