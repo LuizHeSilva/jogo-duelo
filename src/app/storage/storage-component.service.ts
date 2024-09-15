@@ -23,7 +23,7 @@ export class StorageComponent {
 
   public player: BehaviorSubject<Personagem> = new BehaviorSubject<Personagem>(null);
   public npc: BehaviorSubject<Personagem> = new BehaviorSubject<Personagem>(null);
-  public turno: BehaviorSubject<Turno> = new BehaviorSubject<Turno>(Turno.PLAYER);
+  public turno: BehaviorSubject<Turno> = new BehaviorSubject<Turno>(Turno.ATRIBUTOS);
 
   public roletaParou: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public resultadoAtaque: BehaviorSubject<string> = new BehaviorSubject<string>('');
@@ -145,7 +145,7 @@ export class StorageComponent {
   }
 
   inicializarPersonagens() {
-    this.npc.next(CriarPersonagens.criar(this.nomeJogador.value));
+    this.npc.next(CriarPersonagens.criar());
     this.player.next(CriarPersonagens.criar(this.nomeJogador.value));
   }
 

@@ -17,6 +17,16 @@
     </div>
 
     <div class="item">
+      <label for="modificadorDano">Dano:</label>
+      <span id="modificadorDano">{{ personagem.atributo.modificadorDano }}</span>
+    </div>
+
+    <div class="item">
+      <label for="modificadorDado">Modificador Dado:</label>
+      <span id="modificadorDado">{{ personagem.atributo.modificadorDado }}</span>
+    </div>
+
+    <div class="item">
       <label for="experiencia">Experiência:</label>
       <div class="bar-container">
         <div class="bar" [ngStyle]="{'width': personagem.experiencia + '%'}"></div>

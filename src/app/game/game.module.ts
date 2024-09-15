@@ -10,25 +10,27 @@ import {DirectiveModule} from "../common/directive/diretivas.module";
 import { SpriteModule } from "../sprite/sprite.module";
 import { FimJogoModule } from "../fim-jogo/fim-jogo.module";
 import { DistribuidorAtributosComponent } from "../distribuir-atributos/distribuir-atributos.component";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
     GameComponent,
   ],
-  imports: [
-    RouterModule.forChild([
-        { path: '', component: GameComponent }
-    ]),
-    CommonModule,
-    NpcModule,
-    PersonagemModule,
-    PlayerModule,
-    DialogModule,
-    DirectiveModule,
-    SpriteModule,
-    FimJogoModule,
-    DistribuidorAtributosComponent
-],
+    imports: [
+        RouterModule.forChild([
+            {path: '', component: GameComponent}
+        ]),
+        CommonModule,
+        NpcModule,
+        PersonagemModule,
+        PlayerModule,
+        DialogModule,
+        DirectiveModule,
+        SpriteModule,
+        FimJogoModule,
+        DistribuidorAtributosComponent,
+        FormsModule
+    ],
   exports: [GameComponent],
   providers: [],
 })

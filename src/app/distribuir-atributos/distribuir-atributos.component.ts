@@ -13,20 +13,20 @@ import { VisualizarAtributosComponent } from "./visualizar-atributos/visualizar-
 })
 export class DistribuidorAtributosComponent {
 
-  pontosRestantes: number = 10;
+  pontosRestantes: number = 4;
+  maxPontos: number = 4;
 
   atributos: {[key: string]: {atual: number, total: number}};
 
-  maxPontos: number = 10;
-
   constructor(private _storage: StorageComponent) {
-    this.atributos = {'agilidade': {atual: 0, total: _storage.getPlayer().atributo.agilidade},
+    this.atributos = {
       'destreza': {atual: 0, total: _storage.getPlayer().atributo.destreza},
       'forca': {atual: 0, total: _storage.getPlayer().atributo.forca},
-      'inteligencia': {atual: 0, total: _storage.getPlayer().atributo.inteligencia},
       'resistencia': {atual: 0, total: _storage.getPlayer().atributo.resistencia},
-      'sorte': {atual: 0, total: _storage.getPlayer().atributo.sorte}}
-
+      // 'agilidade': {atual: 0, total: _storage.getPlayer().atributo.agilidade},
+      // 'inteligencia': {atual: 0, total: _storage.getPlayer().atributo.inteligencia},
+      // 'sorte': {atual: 0, total: _storage.getPlayer().atributo.sorte}
+      }
   }
 
   distribuirPonto(atributo: string) {
@@ -39,8 +39,16 @@ export class DistribuidorAtributosComponent {
   }
 
   regraDistribuicaoAtributos(atributo: string) {
-    if (atributo === 'resistencia') {
-      this._storage.getPlayer().vida = this._storage.getPlayer().vidaBase + (this.atributos['resistencia'].total / 2);
+    switch (atributo) {
+      case ('resistencia'):
+        this._storage.getPlayer().vida = this._storage.getPlayer().vidaBase + (this.atributos['resistencia'].total / 2);
+        break;
+      case ('destreza'):
+        this._storage.getPlayer().atributo.modificadorDado = this.atributos['destreza'].total / 100;
+        break;
+      case ('forca'):
+        this._storage.getPlayer().atributo.modificadorDano = this.atributos['forca'].total / 10;
+        break;
     }
   }
 
@@ -59,12 +67,12 @@ export class DistribuidorAtributosComponent {
   }
 
   private setAtributosDistribuidos() {
-    this._storage.getPlayer().atributo.agilidade = this.atributos['agilidade'].total;
     this._storage.getPlayer().atributo.destreza = this.atributos['destreza'].total;
     this._storage.getPlayer().atributo.forca = this.atributos['forca'].total;
-    this._storage.getPlayer().atributo.inteligencia = this.atributos['inteligencia'].total;
     this._storage.getPlayer().atributo.resistencia = this.atributos['resistencia'].total;
-    this._storage.getPlayer().atributo.sorte = this.atributos['sorte'].total;
+    // this._storage.getPlayer().atributo.agilidade = this.atributos['agilidade'].total;
+    // this._storage.getPlayer().atributo.inteligencia = this.atributos['inteligencia'].total;
+    // this._storage.getPlayer().atributo.sorte = this.atributos['sorte'].total;
   }
 
   get atributoNames() {

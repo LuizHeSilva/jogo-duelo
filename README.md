@@ -35,7 +35,7 @@
 
 [ ] No painel, definir a saúde de cada parte do corpo; 
 
-[ ] Ajustar fundo infinito para ficar sem a "travada" quando chegar ao fim da imagem;
+[x] Ajustar fundo infinito para ficar sem a "travada" quando chegar ao fim da imagem;
 
 [X] Depois que escolher onde atacar, fechar o dialog automaticamente;
 

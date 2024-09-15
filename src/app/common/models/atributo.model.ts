@@ -5,4 +5,7 @@ export interface Atributo {
   inteligencia: number;
   resistencia: number;
   sorte: number;
+
+  modificadorDano: number;
+  modificadorDado: number;
 }

@@ -28,6 +28,8 @@ export class Atributos {
     inteligencia: number;
     resistencia: number;
     sorte: number;
+    modificadorDano: number;
+    modificadorDado: number;
 
     constructor() {
         this.agilidade = 0;
@@ -36,6 +38,8 @@ export class Atributos {
         this.inteligencia = 0;
         this.resistencia = 0;
         this.sorte = 0;
+        this.modificadorDano = 0;
+        this.modificadorDado = 0;
     }
 
 }
