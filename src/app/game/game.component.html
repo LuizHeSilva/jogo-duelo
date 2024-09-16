@@ -7,10 +7,9 @@
     <span class="nome">NPC</span>: <span class="vida" [ngClass]="{ 'damaged': npcRecebeuDano }">{{npc.vida}}</span>
   </div>
   <div> <button (click)="trocar()">Tela Atributos</button> </div>
+  <div> <button (click)="escolha()">Tela Escolha</button> </div>
   <div class="turno">Turno: <span class="turno-texto">{{ turno }}</span></div>
 </div>
-
-<!--<app-sprite [spriteWidth]="64" [spriteHeight]="64" [frameCount]="10"></app-sprite>-->
 
 <div class="container">
   @switch (turno) {
@@ -27,6 +26,21 @@
 
     @case (Turno.ATRIBUTOS) {
       <distribuir-atributos></distribuir-atributos>
+    }
+
+    @case (Turno.ESCOLHA) {
+      
+      <div class="tooltip-container">
+        <div class="tooltip-item" data-tooltip="Inimigo!">
+          <sprite></sprite>
+        </div>
+        <div class="tooltip-item" data-tooltip="Cidade!">
+          <img src="../../assets/cidade.png"/>
+        </div>
+        <div class="tooltip-item" data-tooltip="Mochila!">
+          <img src="../../assets/mochila.png"/>
+        </div>
+      </div>
     }
 
     @case (Turno.FIMJOGO) {

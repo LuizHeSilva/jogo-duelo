@@ -1,14 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-sprite',
+  selector: 'sprite',
   templateUrl: './sprite.component.html',
   styleUrls: ['./sprite.component.css']
 })
 export class SpriteComponent implements OnInit {
 
-  @Input() spriteWidth: number = 64;
-  @Input() spriteHeight: number = 64;
+  @Input() spriteWidth: number = 16;
+  @Input() spriteHeight: number = 16;
   @Input() frameCount: number = 10;
 
   spriteStyle = {};

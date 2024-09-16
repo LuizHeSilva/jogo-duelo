@@ -60,6 +60,11 @@ export class DistribuidorAtributosComponent {
     }
   }
 
+  teste() {
+    this.setAtributosDistribuidos();
+    this._storage.setTurno(Turno.ESCOLHA);
+  }
+
   continuar() {
     this.setAtributosDistribuidos();
 

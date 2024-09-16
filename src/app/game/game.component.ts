@@ -50,6 +50,10 @@ export class GameComponent implements OnInit {
   trocar() {
     this._storage.setTurno(Turno.ATRIBUTOS);
   }
+  
+  escolha() {
+    this._storage.setTurno(Turno.ESCOLHA);
+  }
 
   mudarTurno() {
     this._storage.trocarTurno();
