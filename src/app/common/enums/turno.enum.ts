@@ -3,5 +3,7 @@ export enum Turno {
     NPC = 'NPC',
     ATRIBUTOS = 'ATRIBUTOS',
     ESCOLHA = 'ESCOLHA',
+    MOCHILA = 'MOCHILA',
+    CIDADE = 'CIDADE',
     FIMJOGO = 'FIMJOGO'
 }

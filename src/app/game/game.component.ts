@@ -51,12 +51,16 @@ export class GameComponent implements OnInit {
     this._storage.setTurno(Turno.ATRIBUTOS);
   }
   
-  escolha() {
-    this._storage.setTurno(Turno.ESCOLHA);
+  alterarTurno(turno: string) {
+    this._storage.setTurno(this._getTurno(turno));
   }
-
+  
   mudarTurno() {
     this._storage.trocarTurno();
+  }
+
+  private _getTurno(turno: string): Turno {
+    return Object.values(Turno).find(key => Turno[key] === turno);
   }
 
 }

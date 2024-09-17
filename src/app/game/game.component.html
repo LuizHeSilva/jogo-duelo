@@ -7,7 +7,7 @@
     <span class="nome">NPC</span>: <span class="vida" [ngClass]="{ 'damaged': npcRecebeuDano }">{{npc.vida}}</span>
   </div>
   <div> <button (click)="trocar()">Tela Atributos</button> </div>
-  <div> <button (click)="escolha()">Tela Escolha</button> </div>
+  <div> <button (click)="alterarTurno('ESCOLHA')">Tela Escolha</button> </div>
   <div class="turno">Turno: <span class="turno-texto">{{ turno }}</span></div>
 </div>
 
@@ -31,13 +31,13 @@
     @case (Turno.ESCOLHA) {
       
       <div class="tooltip-container">
-        <div class="tooltip-item" data-tooltip="Inimigo!">
+        <div class="tooltip-item" data-tooltip="Inimigo!" (click)="alterarTurno('PLAYER')">
           <sprite></sprite>
         </div>
-        <div class="tooltip-item" data-tooltip="Cidade!">
+        <div class="tooltip-item" data-tooltip="Cidade!" (click)="alterarTurno('CIDADE')">
           <img src="../../assets/cidade.png"/>
         </div>
-        <div class="tooltip-item" data-tooltip="Mochila!">
+        <div class="tooltip-item" data-tooltip="Mochila!" (click)="alterarTurno('MOCHILA')">
           <img src="../../assets/mochila.png"/>
         </div>
       </div>

@@ -20,46 +20,33 @@
   position: relative;
   display: inline-flex;
   place-items: center;
-  font-family: 'Courier New', Courier, monospace; /* Fonte com aparência de manuscrito */
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .tooltip-item {
-  color: #3e2723; /* Cor de texto escura, como carvão */
+  color: #3e2723;
   padding: 10px;
   cursor: pointer;
-  position: relative; /* Para posicionar a tooltip corretamente */
+  position: relative;
 }
 
 .tooltip-item:hover::after {
   content: attr(data-tooltip);
   position: absolute;
-  top: 125%; /* Ajuste conforme necessário */
+  top: 125%;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #d8b484; /* Cor de fundo da tooltip */
-  color: #3e2723; /* Cor de texto */
+  background-color: #d8b484;
+  color: #3e2723;
   padding: 8px;
-  border: 2px solid #5d4037; /* Borda escura para combinar com o item */
+  border: 2px solid #5d4037;
   border-radius: 4px;
   white-space: nowrap;
   opacity: 1;
   visibility: visible;
   transition: opacity 0.3s;
-  font-family: 'Courier New', Courier, monospace; /* Fonte manuscrita */
+  font-family: 'Courier New', Courier, monospace;
   text-align: center;
   font-size: 0.9em;
 }
 
-.tooltip-item::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  border-width: 5px;
-  border-style: solid;
-  border-color: transparent transparent #d8b484 transparent; /* Triângulo apontando para baixo */
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s;
-}
