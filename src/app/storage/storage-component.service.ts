@@ -19,6 +19,8 @@ export class StorageComponent {
 
   public modalComponent: DialogComponent;
 
+  public isNpcDerrotado: Boolean = false;
+
   public nomeJogador: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
   public player: BehaviorSubject<Personagem> = new BehaviorSubject<Personagem>(null);
@@ -192,8 +194,6 @@ export class StorageComponent {
       });
     }
 
-// TODO: metodo que valida final do jogo.
-// adaptar o mesmo para finalizar o duelo e criar nova ação.
     this._verificarVidaPersonagem(personagem);
 
     timer(2000).subscribe(() => {
@@ -208,8 +208,10 @@ export class StorageComponent {
         this.setDano(0);
         this.exibirBotaoReset.next(true);
         if (personagem.isNpc) {
-         this.turno.next(Turno.ATRIBUTOS);
-         return;
+          this.npc.next(CriarPersonagens.criar());
+          this.isNpcDerrotado = true;
+          this.turno.next(Turno.ATRIBUTOS);
+          return;
         }
         this.turno.next(Turno.FIMJOGO);
       });

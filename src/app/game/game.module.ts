@@ -11,26 +11,28 @@ import { SpriteModule } from "../sprite/sprite.module";
 import { FimJogoModule } from "../fim-jogo/fim-jogo.module";
 import { DistribuidorAtributosComponent } from "../distribuir-atributos/distribuir-atributos.component";
 import { FormsModule } from "@angular/forms";
+import { MochilaComponent } from "../mochila/mochila.component";
 
 @NgModule({
   declarations: [
     GameComponent,
   ],
     imports: [
-        RouterModule.forChild([
-            {path: '', component: GameComponent}
-        ]),
-        CommonModule,
-        NpcModule,
-        PersonagemModule,
-        PlayerModule,
-        DialogModule,
-        DirectiveModule,
-        SpriteModule,
-        FimJogoModule,
-        DistribuidorAtributosComponent,
-        FormsModule
-    ],
+    RouterModule.forChild([
+        { path: '', component: GameComponent }
+    ]),
+    CommonModule,
+    NpcModule,
+    PersonagemModule,
+    PlayerModule,
+    DialogModule,
+    DirectiveModule,
+    SpriteModule,
+    FimJogoModule,
+    DistribuidorAtributosComponent,
+    FormsModule,
+    MochilaComponent
+],
   exports: [GameComponent],
   providers: [],
 })

@@ -1,0 +1,10 @@
+<br>
+<h1 class="title">Mochila</h1>
+<div class="mochila">
+    @for (item of itens; track item) {
+        <div class="item" [ngClass]="{'preenchido': item}">
+          {{ item ? item : '' }}
+        </div>
+    }
+</div>
+  
